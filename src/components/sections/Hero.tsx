@@ -2,13 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import YouTubeBackground from "@/components/media/YouTubeBackground";
 import { ScrollAnimated } from "../ui/ScrollAnimated";
 
 interface HeroProps {
@@ -19,38 +18,17 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
-  const getYouTubeId = (url: string) => {
-    try {
-      const short = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
-      if (short) return short[1];
-      const long = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
-      if (long) return long[1];
-      const embed = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/);
-      if (embed) return embed[1];
-      return null;
-    } catch {
-      return null;
-    }
-  };
-
-  const videoId = React.useMemo(() => {
-    if (!videoURL) return null;
-    return getYouTubeId(videoURL);
-  }, [videoURL]);
-
   return (
     <header className="relative isolate overflow-hidden min-h-screen">
       <div className="absolute inset-0 -z-10">
-        {videoId ? (
-          <YouTubeBackground videoId={videoId} />
-        ) : (
-          <img
-            className="h-full w-full object-cover"
-            src="/lovable-uploads/ec39e3ab-4272-4f03-bccc-3b08dd81c9ab.png"
-            alt="Blurry corporate lobby background for Jairosoft hero"
-            loading="eager"
-          />
-        )}
+        <video
+          className="h-full w-full object-cover"
+          src="/lovable-uploads/video-background.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
       </div>
 
       <nav className="container relative z-10 flex items-center justify-between py-6">
@@ -60,12 +38,12 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
           className="inline-flex items-center gap-2"
         >
           <img
-            src="/lovable-uploads/94071b7c-c7a5-4cfb-acd4-6064ff2a66ec.png"
+            src="/lovable-uploads/logo-jairosoft.png"
             alt="Jairosoft logo"
             className="h-8 w-auto"
             loading="eager"
           />
-          <span className="font-montserrat font-extrabold tracking-wide text-white text-2xl">
+          <span className="font-montserrat font-extrabold tracking-wide text-black text-2xl">
             JAIROSOFT
           </span>
         </a>
