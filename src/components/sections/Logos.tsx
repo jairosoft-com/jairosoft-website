@@ -10,7 +10,7 @@ const Logos: React.FC = () => {
       </div>
       <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 items-center gap-6 sm:grid-cols-3">
         {logos.map((name) => (
-          <div key={name} className="flex h-16 items-center justify-center rounded-md border border-border/60 bg-card text-sm text-muted-foreground">
+          <div key={name} className="flex h-16 items-center justify-center rounded-none border border-border/60 bg-card text-sm text-muted-foreground">
             {name}
           </div>
         ))}

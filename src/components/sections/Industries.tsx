@@ -21,7 +21,7 @@ const Industries: React.FC = () => {
       </div>
       <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
         {items.map((name) => (
-          <div key={name} className="rounded-lg border border-border/70 bg-card px-4 py-6 text-center shadow-sm transition hover:shadow-elevated">
+          <div key={name} className="rounded-none border border-border/70 bg-card px-4 py-6 text-center shadow-sm transition hover:shadow-elevated">
             <span className="text-sm font-medium text-foreground">{name}</span>
           </div>
         ))}

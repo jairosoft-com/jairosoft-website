@@ -9,6 +9,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 
+
 interface HeroProps {
   videoURL: string;
   title: string;
@@ -33,14 +34,14 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
       </div>
 
       <nav className="container relative z-10 flex items-center justify-between py-6">
-        <a href="/" className="text-sm font-semibold tracking-wide text-primary-foreground/90 md:text-foreground">Jairosoft</a>
+        <a href="/" aria-label="Jairosoft home" className="inline-flex items-center"><img src="/lovable-uploads/cc373cb7-1c4e-4bb4-9313-1c18951cdbfd.png" alt="Jairosoft logo" className="h-8 w-auto" loading="eager" /></a>
         <div className="hidden md:block">
           <NavigationMenu className="z-50">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Industries</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li><a className="text-sm hover:underline" href="#industries">All Industries</a></li>
                   </ul>
                 </NavigationMenuContent>
@@ -48,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li><a className="text-sm hover:underline" href="#services">Our Services</a></li>
                   </ul>
                 </NavigationMenuContent>
@@ -56,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Insights</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li><a className="text-sm hover:underline" href="#insights">Latest Articles</a></li>
                   </ul>
                 </NavigationMenuContent>
@@ -64,7 +65,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Results</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li><a className="text-sm hover:underline" href="#testimonials">Client Stories</a></li>
                   </ul>
                 </NavigationMenuContent>
@@ -72,7 +73,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>About</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li><a className="text-sm hover:underline" href="#contact">Contact Us</a></li>
                   </ul>
                 </NavigationMenuContent>
@@ -84,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
       </nav>
 
       <div className="pointer-events-none absolute right-6 top-[22vh] w-[min(90%,28rem)]">
-        <div className="pointer-events-auto rounded-md bg-primary/80 p-6 shadow-elevated backdrop-blur">
+        <div className="pointer-events-auto rounded-none bg-primary/80 p-6 shadow-elevated backdrop-blur">
           <h1 className="mb-3 text-3xl font-extrabold leading-tight tracking-tight text-primary-foreground md:text-4xl">
             {title}
           </h1>
