@@ -8,7 +8,7 @@ import {
   NavigationMenuContent,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-
+import YouTubeBackground from "@/components/media/YouTubeBackground";
 
 interface HeroProps {
   videoURL: string;
@@ -32,26 +32,16 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
     }
   };
 
-  const embedUrl = React.useMemo(() => {
+  const videoId = React.useMemo(() => {
     if (!videoURL) return null;
-    const id = getYouTubeId(videoURL);
-    return id
-      ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&modestbranding=1&playsinline=1&rel=0`
-      : null;
+    return getYouTubeId(videoURL);
   }, [videoURL]);
 
   return (
     <header className="relative isolate overflow-hidden min-h-screen">
       <div className="absolute inset-0 -z-10">
-        {embedUrl ? (
-          <iframe
-            className="h-full w-full pointer-events-none"
-            src={embedUrl}
-            title="Jairosoft hero background video"
-            allow="autoplay; fullscreen; picture-in-picture"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        {videoId ? (
+          <YouTubeBackground videoId={videoId} />
         ) : (
           <img
             className="h-full w-full object-cover"
@@ -60,7 +50,6 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
             loading="eager"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/30 to-background/95" aria-hidden="true" />
       </div>
 
       <nav className="container relative z-10 flex items-center justify-between py-6">
