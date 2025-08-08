@@ -19,7 +19,7 @@ const Timeline: React.FC = () => {
       <ol className="relative mx-auto mt-12 max-w-3xl border-s border-border/60">
         {events.map((e, idx) => (
           <li key={e.year} className="ms-6 py-4">
-            <span className="absolute -start-3 mt-1 h-6 w-6 rounded-none bg-gradient-primary shadow-glow" aria-hidden="true" />
+            <span className="absolute -start-3 mt-1 h-6 w-6 rounded-full bg-gradient-primary shadow-glow" aria-hidden="true" />
             <div className="rounded-none border border-border/60 bg-card p-5 shadow-sm transition hover:shadow-elevated">
               <div className="text-sm font-semibold text-primary">{e.year}</div>
               <p className="mt-1 text-sm text-muted-foreground">{e.description}</p>
