@@ -21,14 +21,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
   return (
     <header className="relative isolate overflow-hidden min-h-screen">
       <div className="absolute inset-0 -z-10">
-        <video
+        <img
           className="h-full w-full object-cover"
-          src={videoURL}
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-label="Background video of abstract digital waves"
+          src="/lovable-uploads/ec39e3ab-4272-4f03-bccc-3b08dd81c9ab.png"
+          alt="Blurry corporate lobby background for Jairosoft hero"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/30 to-background/95" aria-hidden="true" />
       </div>
