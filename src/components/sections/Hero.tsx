@@ -82,11 +82,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
       </nav>
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">
-        <div className="pointer-events-auto rounded-none bg-background/95 border border-primary p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-foreground text-center">
-          <h1 className="mb-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-foreground">
+        <div className="pointer-events-auto rounded-none bg-primary/90 p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-primary-foreground text-center">
+          <h1 className="mb-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-primary-foreground">
             {title}
           </h1>
-          <p className="mb-8 text-foreground/90 text-lg md:text-xl">
+          <p className="mb-8 text-primary-foreground/90 text-lg md:text-xl">
             {subtitle}
           </p>
           <div className="flex items-center gap-3">
