@@ -29,7 +29,7 @@ const Index: React.FC = () => {
         <Hero
           videoURL="https://youtu.be/rvVlTTg_7JQ"
           title="Built for Enterprise"
-          subtitle="Sitecore Experts. Agile Teams. SAFe Delivery. Since 2008."
+          subtitle="Powering the world's most demanding digital platforms."
           cta="Talk to an Expert"
         />
         <Services />
@@ -38,7 +38,7 @@ const Index: React.FC = () => {
         <Testimonials />
         <Logos />
         <QuizCTA />
-        <Insights />
+        {/* <Insights /> */}
         <Contact />
       </main>
       <Footer />

@@ -9,6 +9,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import YouTubeBackground from "@/components/media/YouTubeBackground";
+import { ScrollAnimated } from "../ui/ScrollAnimated";
 
 interface HeroProps {
   videoURL: string;
@@ -139,39 +140,51 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
         </div>
         <a
           href="#contact"
-          className="md:hidden text-sm text-foreground/80 hover:text-foreground"
+          className="md:hidden bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
         >
-          Let’s talk
+          Let's talk
         </a>
       </nav>
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">
-        <div className="pointer-events-auto flex flex-col items-center gap-4 rounded-none bg-primary/90 p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-primary-foreground text-center">
-          <img
-            src="/lovable-uploads/logo-jairosoft-dark.png"
-            alt="Jairosoft"
-            className="h-24 w-auto mx-auto"
-            loading="eager"
-          />
-          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-primary-foreground">
-            {title}
-          </h1>
-          <p className="text-primary-foreground/90 font-bold text-lg md:text-xl">
-            {subtitle}
-          </p>
-          <div className="flex items-center justify-center gap-3">
-            <Button size="lg" variant="secondary" asChild>
-              <a href="#contact" aria-label={cta}>
-                {cta}
-              </a>
-            </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <a href="#services" aria-label="Explore our services">
-                Explore Services
-              </a>
-            </Button>
+        <ScrollAnimated animation="fadeInUp" threshold={0.1}>
+          <div className="pointer-events-auto flex flex-col items-center gap-4 rounded-none bg-primary/90 p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-primary-foreground text-center">
+            <img
+              src="/lovable-uploads/logo-jairosoft-dark.png"
+              alt="Jairosoft"
+              className="h-24 w-auto mx-auto"
+              loading="eager"
+            />
+            <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-primary-foreground">
+              {title}
+            </h1>
+            <p className="text-primary-foreground/90 font-bold text-lg md:text-xl">
+              {subtitle}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="w-full sm:w-auto"
+                asChild
+              >
+                <a href="#contact" aria-label={cta}>
+                  {cta}
+                </a>
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto"
+                asChild
+              >
+                <a href="#services" aria-label="Explore our services">
+                  Explore Services
+                </a>
+              </Button>
+            </div>
           </div>
-        </div>
+        </ScrollAnimated>
       </div>
     </header>
   );

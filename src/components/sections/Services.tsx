@@ -1,13 +1,14 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { ScrollAnimated } from "../ui/ScrollAnimated";
 
 const services = [
   {
     label: "Team Augmentation",
     name: "Build Your Own Agile Team.",
     description:
-      "Plug in elite development teams instantly — no hiring, no overhead, no red tape. Just scalable, enterprise-ready talent aligned with your goals.",
+      "Plug in elite development teams instantly. Scalable, enterprise-ready talent aligned with your goals.",
   },
   {
     label: "Sitecore XP / XM",
@@ -43,33 +44,40 @@ const Services: React.FC = () => {
           const bg =
             i === 0 ? "bg-brand-blue" : i === 1 ? "bg-accent" : "bg-black";
           return (
-            <Card
+            <ScrollAnimated
               key={s.name}
-              className={cn(
-                "group border-0 overflow-hidden transition-transform hover:-translate-y-1",
-                bg
-              )}
+              animation="fadeInUp"
+              delay={i * 100}
+              threshold={0.1}
+              className="group"
             >
-              <CardHeader className="pt-6">
-                <span className="text-xs uppercase tracking-wide text-primary-foreground/80">
-                  {s.label}
-                </span>
-                <CardTitle className="mt-2 text-xl font-bold leading-snug text-primary-foreground">
-                  {s.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pb-6">
-                <p className="text-sm text-primary-foreground/90">
-                  {s.description}
-                </p>
-                <a
-                  href="#contact"
-                  className="mt-4 inline-block text-sm font-medium text-primary-foreground/90 underline-offset-4 hover:underline"
-                >
-                  Learn More
-                </a>
-              </CardContent>
-            </Card>
+              <Card
+                className={cn(
+                  "group border-0 overflow-hidden transition-transform hover:-translate-y-1",
+                  bg
+                )}
+              >
+                <CardHeader className="pt-6">
+                  <span className="text-xs uppercase tracking-wide text-primary-foreground/80">
+                    {s.label}
+                  </span>
+                  <CardTitle className="mt-2 text-xl font-bold leading-snug text-primary-foreground">
+                    {s.name}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pb-6">
+                  <p className="text-sm text-primary-foreground/90">
+                    {s.description}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="mt-4 inline-block text-sm font-medium text-primary-foreground/90 underline-offset-4 hover:underline"
+                  >
+                    Learn More
+                  </a>
+                </CardContent>
+              </Card>
+            </ScrollAnimated>
           );
         })}
       </div>
