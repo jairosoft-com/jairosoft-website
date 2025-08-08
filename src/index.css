@@ -57,6 +57,9 @@ All colors MUST be HSL.
     --shadow-elevated: 0 10px 30px -10px hsl(258 85% 54% / 0.35);
     --shadow-glow: 0 0 40px hsl(267 100% 62% / 0.45);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Section tints */
+    --industries-tint: 48 100% 96%;
   }
 
   .dark {
@@ -97,6 +100,9 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 248 30% 16%;
     --sidebar-ring: 267 100% 62%;
+
+    /* Section tints */
+    --industries-tint: 48 35% 12%;
   }
 }
 
