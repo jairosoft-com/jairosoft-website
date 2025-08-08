@@ -9,13 +9,14 @@ const posts = [
 
 const Insights: React.FC = () => {
   return (
-    <section id="insights" aria-labelledby="insights-title" className="container py-20">
-      <div className="mx-auto max-w-2xl text-center">
+    <section id="insights" aria-labelledby="insights-title" className="py-20 bg-[hsl(var(--industries-tint))]">
+      <div className="container">
+        <div className="mx-auto max-w-2xl text-center">
         <h2 id="insights-title" className="text-3xl font-bold tracking-tight md:text-4xl">Insights & Thought Leadership</h2>
       </div>
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
+      <div className="mt-10 grid gap-2 md:gap-3 md:grid-cols-3">
         {posts.map((p) => (
-          <Card key={p.title} className="transition hover:shadow-elevated">
+          <Card key={p.title} className="transition hover:shadow-elevated animate-in fade-in zoom-in-95 duration-300">
             <CardHeader>
               <CardTitle className="text-base font-semibold">{p.title}</CardTitle>
             </CardHeader>
@@ -25,6 +26,7 @@ const Insights: React.FC = () => {
           </Card>
         ))}
       </div>
+    </div>
     </section>
   );
 };
