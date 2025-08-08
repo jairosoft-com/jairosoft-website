@@ -15,7 +15,8 @@ const Index: React.FC = () => {
     "@type": "Organization",
     name: "Jairosoft",
     url: "/",
-    description: "Sitecore experts delivering enterprise digital experiences since 2008.",
+    description:
+      "Sitecore experts delivering enterprise digital experiences since 2008.",
     sameAs: [],
   };
 
@@ -23,7 +24,7 @@ const Index: React.FC = () => {
     <main>
       <Hero
         videoURL="https://youtu.be/rvVlTTg_7JQ"
-        title="Digital Experiences Built for Enterprise"
+        title="Built for Enterprise"
         subtitle="Sitecore Experts. Agile Teams. SAFe Delivery. Since 2008."
         cta="Talk to an Expert"
       />
@@ -36,7 +37,10 @@ const Index: React.FC = () => {
       <Insights />
       <Contact />
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
+      />
       <link rel="canonical" href="/" />
     </main>
   );

@@ -53,7 +53,21 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
       </div>
 
       <nav className="container relative z-10 flex items-center justify-between py-6">
-        <a href="/" aria-label="Jairosoft home" className="inline-flex items-center gap-2"><img src="/lovable-uploads/94071b7c-c7a5-4cfb-acd4-6064ff2a66ec.png" alt="Jairosoft logo" className="h-8 w-auto" loading="eager" /><span className="font-montserrat font-extrabold tracking-wide text-white text-2xl">JAIROSOFT</span></a>
+        <a
+          href="/"
+          aria-label="Jairosoft home"
+          className="inline-flex items-center gap-2"
+        >
+          <img
+            src="/lovable-uploads/94071b7c-c7a5-4cfb-acd4-6064ff2a66ec.png"
+            alt="Jairosoft logo"
+            className="h-8 w-auto"
+            loading="eager"
+          />
+          <span className="font-montserrat font-extrabold tracking-wide text-white text-2xl">
+            JAIROSOFT
+          </span>
+        </a>
         <div className="hidden md:block">
           <NavigationMenu className="z-50">
             <NavigationMenuList>
@@ -61,7 +75,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuTrigger>Industries</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li><a className="text-sm hover:underline" href="#industries">All Industries</a></li>
+                    <li>
+                      <a className="text-sm hover:underline" href="#industries">
+                        All Industries
+                      </a>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -69,7 +87,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li><a className="text-sm hover:underline" href="#services">Our Services</a></li>
+                    <li>
+                      <a className="text-sm hover:underline" href="#services">
+                        Our Services
+                      </a>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -77,7 +99,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuTrigger>Insights</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li><a className="text-sm hover:underline" href="#insights">Latest Articles</a></li>
+                    <li>
+                      <a className="text-sm hover:underline" href="#insights">
+                        Latest Articles
+                      </a>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -85,7 +111,14 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuTrigger>Results</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li><a className="text-sm hover:underline" href="#testimonials">Client Stories</a></li>
+                    <li>
+                      <a
+                        className="text-sm hover:underline"
+                        href="#testimonials"
+                      >
+                        Client Stories
+                      </a>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -93,31 +126,49 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuTrigger>About</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li><a className="text-sm hover:underline" href="#contact">Contact Us</a></li>
+                    <li>
+                      <a className="text-sm hover:underline" href="#contact">
+                        Contact Us
+                      </a>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <a href="#contact" className="md:hidden text-sm text-foreground/80 hover:text-foreground">Let’s talk</a>
+        <a
+          href="#contact"
+          className="md:hidden text-sm text-foreground/80 hover:text-foreground"
+        >
+          Let’s talk
+        </a>
       </nav>
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">
-        <div className="pointer-events-auto rounded-none bg-primary/90 p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-primary-foreground text-center">
-          <img src="/lovable-uploads/94071b7c-c7a5-4cfb-acd4-6064ff2a66ec.png" alt="Jairosoft logo" className="h-8 w-auto" loading="eager" />
-          <h1 className="mb-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-primary-foreground">
+        <div className="pointer-events-auto flex flex-col items-center gap-4 rounded-none bg-primary/90 p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-primary-foreground text-center">
+          <img
+            src="/lovable-uploads/logo-jairosoft-dark.png"
+            alt="Jairosoft"
+            className="h-24 w-auto mx-auto"
+            loading="eager"
+          />
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-primary-foreground">
             {title}
           </h1>
-          <p className="mb-8 text-primary-foreground/90 text-lg md:text-xl">
+          <p className="text-primary-foreground/90 font-bold text-lg md:text-xl">
             {subtitle}
           </p>
           <div className="flex items-center justify-center gap-3">
             <Button size="lg" variant="secondary" asChild>
-              <a href="#contact" aria-label={cta}>{cta}</a>
+              <a href="#contact" aria-label={cta}>
+                {cta}
+              </a>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <a href="#services" aria-label="Explore our services">Explore Services</a>
+              <a href="#services" aria-label="Explore our services">
+                Explore Services
+              </a>
             </Button>
           </div>
         </div>
