@@ -81,16 +81,16 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
         <a href="#contact" className="md:hidden text-sm text-foreground/80 hover:text-foreground">Let’s talk</a>
       </nav>
 
-      <div className="pointer-events-none absolute right-6 top-[22vh] w-[min(90%,28rem)]">
-        <div className="pointer-events-auto rounded-none bg-primary/80 p-6 shadow-elevated backdrop-blur">
-          <h1 className="mb-3 text-3xl font-extrabold leading-tight tracking-tight text-primary-foreground md:text-4xl">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">
+        <div className="pointer-events-auto rounded-none bg-background/95 border border-primary p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-foreground text-center">
+          <h1 className="mb-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-foreground">
             {title}
           </h1>
-          <p className="mb-6 text-primary-foreground/90">
+          <p className="mb-8 text-foreground/90 text-lg md:text-xl">
             {subtitle}
           </p>
           <div className="flex items-center gap-3">
-            <Button size="lg" variant="hero" asChild>
+            <Button size="lg" variant="secondary" asChild>
               <a href="#contact" aria-label={cta}>{cta}</a>
             </Button>
             <Button variant="outline" size="lg" asChild>
