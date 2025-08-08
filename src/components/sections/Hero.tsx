@@ -1,5 +1,13 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from "@/components/ui/navigation-menu";
 
 interface HeroProps {
   videoURL: string;
@@ -24,31 +32,73 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/30 to-background/95" aria-hidden="true" />
       </div>
 
-      <nav className="container flex items-center justify-between py-6">
-        <a href="#" className="text-sm font-semibold tracking-wide text-primary-foreground/90 md:text-foreground">Jairosoft</a>
-        <div className="hidden gap-6 md:flex">
-          <a href="#services" className="text-sm text-foreground/80 hover:text-foreground transition-colors">Services</a>
-          <a href="#industries" className="text-sm text-foreground/80 hover:text-foreground transition-colors">Industries</a>
-          <a href="#insights" className="text-sm text-foreground/80 hover:text-foreground transition-colors">Insights</a>
-          <a href="#contact" className="text-sm text-foreground/80 hover:text-foreground transition-colors">Contact</a>
+      <nav className="container relative z-10 flex items-center justify-between py-6">
+        <a href="/" className="text-sm font-semibold tracking-wide text-primary-foreground/90 md:text-foreground">Jairosoft</a>
+        <div className="hidden md:block">
+          <NavigationMenu className="z-50">
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Industries</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                    <li><a className="text-sm hover:underline" href="#industries">All Industries</a></li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                    <li><a className="text-sm hover:underline" href="#services">Our Services</a></li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Insights</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                    <li><a className="text-sm hover:underline" href="#insights">Latest Articles</a></li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Results</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                    <li><a className="text-sm hover:underline" href="#testimonials">Client Stories</a></li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>About</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-md shadow-lg">
+                    <li><a className="text-sm hover:underline" href="#contact">Contact Us</a></li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
         <a href="#contact" className="md:hidden text-sm text-foreground/80 hover:text-foreground">Let’s talk</a>
       </nav>
 
-      <div className="container mx-auto flex min-h-[60vh] flex-col items-center justify-center text-center">
-        <h1 className="mb-4 max-w-4xl text-balance text-4xl font-extrabold tracking-tight text-primary-foreground drop-shadow md:text-6xl">
-          {title}
-        </h1>
-        <p className="mb-8 max-w-2xl text-lg text-primary-foreground/90 md:text-xl">
-          {subtitle}
-        </p>
-        <div className="flex items-center gap-4">
-          <Button size="xl" variant="hero" asChild>
-            <a href="#contact" aria-label={cta}>{cta}</a>
-          </Button>
-          <Button variant="outline" size="lg" asChild>
-            <a href="#services" aria-label="Explore our services">Explore Services</a>
-          </Button>
+      <div className="pointer-events-none absolute right-6 top-[22vh] w-[min(90%,28rem)]">
+        <div className="pointer-events-auto rounded-md bg-primary/80 p-6 shadow-elevated backdrop-blur">
+          <h1 className="mb-3 text-3xl font-extrabold leading-tight tracking-tight text-primary-foreground md:text-4xl">
+            {title}
+          </h1>
+          <p className="mb-6 text-primary-foreground/90">
+            {subtitle}
+          </p>
+          <div className="flex items-center gap-3">
+            <Button size="lg" variant="hero" asChild>
+              <a href="#contact" aria-label={cta}>{cta}</a>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <a href="#services" aria-label="Explore our services">Explore Services</a>
+            </Button>
+          </div>
         </div>
       </div>
     </header>

@@ -29,7 +29,9 @@ All colors MUST be HSL.
 
     --accent: 267 100% 62%;
     --accent-foreground: 0 0% 100%;
-
+    /* Brand accents */
+    --brand-blue: 219 90% 56%;
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
@@ -78,7 +80,9 @@ All colors MUST be HSL.
 
     --accent: 267 100% 62%;
     --accent-foreground: 210 40% 98%;
-
+    /* Brand accents */
+    --brand-blue: 219 90% 60%;
+    
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
