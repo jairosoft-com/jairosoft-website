@@ -8,6 +8,8 @@ import Logos from "@/components/sections/Logos";
 import QuizCTA from "@/components/sections/QuizCTA";
 import Insights from "@/components/sections/Insights";
 import Contact from "@/components/sections/Contact";
+import StickyHeader from "@/components/layout/StickyHeader";
+import Footer from "@/components/layout/Footer";
 
 const Index: React.FC = () => {
   const orgLd = {
@@ -21,28 +23,32 @@ const Index: React.FC = () => {
   };
 
   return (
-    <main>
-      <Hero
-        videoURL="https://youtu.be/rvVlTTg_7JQ"
-        title="Built for Enterprise"
-        subtitle="Sitecore Experts. Agile Teams. SAFe Delivery. Since 2008."
-        cta="Talk to an Expert"
-      />
-      <Services />
-      <Industries />
-      <Timeline />
-      <Testimonials />
-      <Logos />
-      <QuizCTA />
-      <Insights />
-      <Contact />
+    <>
+      <StickyHeader />
+      <main>
+        <Hero
+          videoURL="https://youtu.be/rvVlTTg_7JQ"
+          title="Built for Enterprise"
+          subtitle="Sitecore Experts. Agile Teams. SAFe Delivery. Since 2008."
+          cta="Talk to an Expert"
+        />
+        <Services />
+        <Industries />
+        <Timeline />
+        <Testimonials />
+        <Logos />
+        <QuizCTA />
+        <Insights />
+        <Contact />
+      </main>
+      <Footer />
 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
       />
       <link rel="canonical" href="/" />
-    </main>
+    </>
   );
 };
 
