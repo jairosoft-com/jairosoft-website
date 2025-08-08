@@ -19,10 +19,10 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
   return (
-    <header className="relative isolate overflow-hidden">
+    <header className="relative isolate overflow-hidden min-h-screen">
       <div className="absolute inset-0 -z-10">
         <video
-          className="h-[70vh] w-full object-cover"
+          className="h-full w-full object-cover"
           src={videoURL}
           autoPlay
           muted
@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
       </div>
 
       <nav className="container relative z-10 flex items-center justify-between py-6">
-        <a href="/" aria-label="Jairosoft home" className="inline-flex items-center"><img src="/lovable-uploads/cc373cb7-1c4e-4bb4-9313-1c18951cdbfd.png" alt="Jairosoft logo" className="h-8 w-auto" loading="eager" /></a>
+        <a href="/" aria-label="Jairosoft home" className="inline-flex items-center gap-2"><img src="/lovable-uploads/cc373cb7-1c4e-4bb4-9313-1c18951cdbfd.png" alt="Jairosoft logo" className="h-8 w-auto" loading="eager" /><span className="font-extrabold tracking-wide text-primary">JAIROSOFT</span></a>
         <div className="hidden md:block">
           <NavigationMenu className="z-50">
             <NavigationMenuList>
