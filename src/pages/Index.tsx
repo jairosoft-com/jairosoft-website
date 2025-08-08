@@ -22,7 +22,7 @@ const Index: React.FC = () => {
   return (
     <main>
       <Hero
-        videoURL="https://your-video-url.mp4"
+        videoURL="https://youtu.be/rvVlTTg_7JQ"
         title="Digital Experiences Built for Enterprise"
         subtitle="Sitecore Experts. Agile Teams. SAFe Delivery. Since 2008."
         cta="Talk to an Expert"

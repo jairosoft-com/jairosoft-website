@@ -18,15 +18,48 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
+  const getYouTubeId = (url: string) => {
+    try {
+      const short = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+      if (short) return short[1];
+      const long = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+      if (long) return long[1];
+      const embed = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/);
+      if (embed) return embed[1];
+      return null;
+    } catch {
+      return null;
+    }
+  };
+
+  const embedUrl = React.useMemo(() => {
+    if (!videoURL) return null;
+    const id = getYouTubeId(videoURL);
+    return id
+      ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&modestbranding=1&playsinline=1&rel=0`
+      : null;
+  }, [videoURL]);
+
   return (
     <header className="relative isolate overflow-hidden min-h-screen">
       <div className="absolute inset-0 -z-10">
-        <img
-          className="h-full w-full object-cover"
-          src="/lovable-uploads/ec39e3ab-4272-4f03-bccc-3b08dd81c9ab.png"
-          alt="Blurry corporate lobby background for Jairosoft hero"
-          loading="eager"
-        />
+        {embedUrl ? (
+          <iframe
+            className="h-full w-full pointer-events-none"
+            src={embedUrl}
+            title="Jairosoft hero background video"
+            allow="autoplay; fullscreen; picture-in-picture"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        ) : (
+          <img
+            className="h-full w-full object-cover"
+            src="/lovable-uploads/ec39e3ab-4272-4f03-bccc-3b08dd81c9ab.png"
+            alt="Blurry corporate lobby background for Jairosoft hero"
+            loading="eager"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/30 to-background/95" aria-hidden="true" />
       </div>
 
