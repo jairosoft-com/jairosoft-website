@@ -89,11 +89,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
           <p className="mb-8 text-primary-foreground/90 text-lg md:text-xl">
             {subtitle}
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center gap-3">
             <Button size="lg" variant="secondary" asChild>
               <a href="#contact" aria-label={cta}>{cta}</a>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild>
               <a href="#services" aria-label="Explore our services">Explore Services</a>
             </Button>
           </div>
