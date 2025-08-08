@@ -11,8 +11,8 @@ const services = [
 const Services: React.FC = () => {
   return (
     <section id="services" aria-labelledby="services-title" className="container py-20">
-      <div className="mx-auto max-w-3xl">
-        <h2 id="services-title" className="text-3xl font-extrabold tracking-tight md:text-4xl">
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 id="services-title" className="text-3xl font-extrabold tracking-tight text-center md:text-4xl">
           Let’s Start <span className="text-primary">Simple.</span>
         </h2>
       </div>
