@@ -105,6 +105,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">
         <div className="pointer-events-auto rounded-none bg-primary/90 p-8 md:p-10 shadow-elevated backdrop-blur max-w-3xl w-full text-primary-foreground text-center">
+          <img src="/lovable-uploads/94071b7c-c7a5-4cfb-acd4-6064ff2a66ec.png" alt="Jairosoft logo" className="h-8 w-auto" loading="eager" />
           <h1 className="mb-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-primary-foreground">
             {title}
           </h1>
