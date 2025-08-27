@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -9,6 +9,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { ScrollAnimated } from "../ui/ScrollAnimated";
+import { Menu, X } from "lucide-react";
 
 interface HeroProps {
   videoURL: string;
@@ -18,6 +19,16 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className="relative isolate overflow-hidden min-h-screen">
       <div className="absolute inset-0 -z-10">
@@ -28,6 +39,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
           muted
           loop
           playsInline
+          preload="metadata"
         />
       </div>
 
@@ -43,21 +55,24 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
             className="h-8 w-auto"
             loading="eager"
           />
-          <span className="font-montserrat font-extrabold tracking-wide text-black text-2xl">
+          <span className="font-brand font-extrabold tracking-wide text-black text-2xl">
             JAIROSOFT
           </span>
         </a>
+        {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <NavigationMenu className="z-50">
+          <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Industries</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
-                      <a className="text-sm hover:underline" href="#industries">
-                        All Industries
-                      </a>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#industries">
+                          All Industries
+                        </a>
+                      </NavigationMenuLink>
                     </li>
                   </ul>
                 </NavigationMenuContent>
@@ -67,9 +82,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
-                      <a className="text-sm hover:underline" href="#services">
-                        Our Services
-                      </a>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#services">
+                          Our Services
+                        </a>
+                      </NavigationMenuLink>
                     </li>
                   </ul>
                 </NavigationMenuContent>
@@ -79,9 +96,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
-                      <a className="text-sm hover:underline" href="#insights">
-                        Latest Articles
-                      </a>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#insights">
+                          Latest Articles
+                        </a>
+                      </NavigationMenuLink>
                     </li>
                   </ul>
                 </NavigationMenuContent>
@@ -91,12 +110,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
-                      <a
-                        className="text-sm hover:underline"
-                        href="#testimonials"
-                      >
-                        Client Stories
-                      </a>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#testimonials">
+                          Client Stories
+                        </a>
+                      </NavigationMenuLink>
                     </li>
                   </ul>
                 </NavigationMenuContent>
@@ -106,9 +124,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 <NavigationMenuContent>
                   <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
-                      <a className="text-sm hover:underline" href="#contact">
-                        Contact Us
-                      </a>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#contact">
+                          Contact Us
+                        </a>
+                      </NavigationMenuLink>
                     </li>
                   </ul>
                 </NavigationMenuContent>
@@ -116,12 +136,102 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <a
-          href="#contact"
-          className="md:hidden bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
+            className="p-2 text-black hover:bg-black/10 rounded-md transition-colors"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+          <a
+            href="#contact"
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+          >
+            Let's talk
+          </a>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div
+            className="md:hidden fixed inset-0 z-40 bg-black/50"
+            onClick={closeMobileMenu}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Mobile Menu Panel */}
+        <div
+          className={`md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-50 ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
         >
-          Let's talk
-        </a>
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-8">
+              <span className="font-brand font-extrabold text-xl text-black">Menu</span>
+              <button
+                onClick={closeMobileMenu}
+                aria-label="Close navigation menu"
+                className="p-2 text-black hover:bg-black/10 rounded-md transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <nav>
+              <ul className="space-y-6">
+                <li>
+                  <a
+                    href="#industries"
+                    onClick={closeMobileMenu}
+                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
+                  >
+                    Industries
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    onClick={closeMobileMenu}
+                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
+                  >
+                    Solutions
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#insights"
+                    onClick={closeMobileMenu}
+                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
+                  >
+                    Insights
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#testimonials"
+                    onClick={closeMobileMenu}
+                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
+                  >
+                    Results
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    onClick={closeMobileMenu}
+                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
+                  >
+                    About
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </nav>
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">

@@ -34,7 +34,7 @@ const StickyHeader: React.FC = () => {
             className="h-7 w-auto"
             loading="lazy"
           />
-          <span className="font-montserrat font-extrabold tracking-wide text-foreground text-xl">
+          <span className="font-brand font-extrabold tracking-wide text-foreground text-xl">
             JAIROSOFT
           </span>
         </a>

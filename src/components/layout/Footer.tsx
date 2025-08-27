@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
                 className="h-9 w-auto"
                 loading="lazy"
               />
-              <span className="font-montserrat font-extrabold tracking-wide text-lg">
+              <span className="font-brand font-extrabold tracking-wide text-lg">
                 JAIROSOFT
               </span>
             </div>
