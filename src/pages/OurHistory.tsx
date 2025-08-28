@@ -10,44 +10,39 @@ const OurHistory: React.FC = () => {
     {
       country: "United States",
       locations: [
-        { city: "California", address: "12584 Luna Road Victorville, California 92392" },
-        { city: "Hawaii", address: "1050 Queen St Suite 100, Honolulu, HI 96814" }
-      ]
+        {
+          city: "California",
+          address: "12584 Luna Road Victorville, California 92392",
+        },
+        {
+          city: "Hawaii",
+          address: "1050 Queen St Suite 100, Honolulu, HI 96814",
+        },
+      ],
     },
     {
-      country: "Philippines", 
+      country: "Philippines",
       locations: [
-        { city: "Davao City", address: "Holy Trinity Avenue, Holy Trinity Village, Cabantian 8000 Davao City" },
-        { city: "Cebu City", address: "1049 M.J. Cuenco Avenue Mabolo Cebu City, 6000" }
-      ]
-    }
+        {
+          city: "Davao City",
+          address:
+            "Holy Trinity Avenue, Holy Trinity Village, Cabantian 8000 Davao City",
+        },
+        {
+          city: "Cebu City",
+          address: "1049 M.J. Cuenco Avenue Mabolo Cebu City, 6000",
+        },
+      ],
+    },
   ];
 
-  const industries = ["Consumer Products", "Government Agencies", "Healthcare Providers", "Educational Institutions"];
+  const industries = [
+    "Consumer Products",
+    "Government Agencies",
+    "Healthcare Providers",
+    "Educational Institutions",
+  ];
   const values = ["Trust", "Reliability", "Shared Success"];
-
-  const partnerships = [
-    {
-      name: "SAFe Partnership",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998678646x539598771628142300/SAFe%20Partnership%20Badge%201.svg"
-    },
-    {
-      name: "Sitecore",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998709205x254204165927421900/sitecore.svg"
-    },
-    {
-      name: "AWS",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998656423x664597898014441900/aws.svg"
-    },
-    {
-      name: "Microsoft",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998592690x392237184079143000/microsoft.svg"
-    },
-    {
-      name: "Google Partner",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998547625x104302073671369560/google%20partner.svg"
-    }
-  ];
 
   return (
     <>
@@ -81,12 +76,16 @@ const OurHistory: React.FC = () => {
           <div className="container mx-auto max-w-4xl">
             <ScrollAnimated animation="fadeInUp">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission & Vision</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Our Mission & Vision
+                </h2>
                 <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8 border border-gray-100">
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    Founded in 2017, Jairosoft is committed to being an <strong className="text-red-600">AI-first company</strong> by 
-                    providing exceptional software solutions specifically designed for small and medium-sized businesses 
-                    leveraging the advancements of artificial intelligence technology.
+                    Founded in 2017, Jairosoft is committed to being an{" "}
+                    <strong className="text-red-600">AI-first company</strong>{" "}
+                    by providing exceptional software solutions specifically
+                    designed for small and medium-sized businesses leveraging
+                    the advancements of artificial intelligence technology.
                   </p>
                 </div>
               </div>
@@ -99,16 +98,19 @@ const OurHistory: React.FC = () => {
           <div className="container mx-auto max-w-6xl">
             <ScrollAnimated animation="fadeInUp">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Industries We Empower</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Industries We Empower
+                </h2>
                 <p className="text-lg text-gray-600 mb-12">
-                  Our mission is to empower enterprises across a variety of industries
+                  Our mission is to empower enterprises across a variety of
+                  industries
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {industries.map((industry, index) => (
-                    <ScrollAnimated 
-                      key={index} 
-                      animation="fadeInUp" 
+                    <ScrollAnimated
+                      key={index}
+                      animation="fadeInUp"
                       delay={index * 0.1}
                     >
                       <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
@@ -132,13 +134,19 @@ const OurHistory: React.FC = () => {
           <div className="container mx-auto max-w-4xl">
             <ScrollAnimated animation="fadeInUp">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Company Values & Approach</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Company Values & Approach
+                </h2>
                 <div className="bg-gray-50 rounded-xl p-8 mb-12">
                   <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                    With years of experience and continuous innovation, we have refined our offerings to address 
-                    the unique needs and challenges faced by businesses in these sectors. Our dedication to excellence 
-                    is evident not only in the quality of our products but also in our focus on <strong className="text-red-600">cost efficiency</strong>, 
-                    ensuring that our solutions remain accessible to organizations of different sizes and budgets.
+                    With years of experience and continuous innovation, we have
+                    refined our offerings to address the unique needs and
+                    challenges faced by businesses in these sectors. Our
+                    dedication to excellence is evident not only in the quality
+                    of our products but also in our focus on{" "}
+                    <strong className="text-red-600">cost efficiency</strong>,
+                    ensuring that our solutions remain accessible to
+                    organizations of different sizes and budgets.
                   </p>
 
                   <div className="grid md:grid-cols-3 gap-6">
@@ -147,7 +155,9 @@ const OurHistory: React.FC = () => {
                         <div className="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-full mb-4">
                           <Heart className="h-6 w-6 text-red-600" />
                         </div>
-                        <h3 className="text-lg font-semibold text-gray-900">{value}</h3>
+                        <h3 className="text-lg font-semibold text-gray-900">
+                          {value}
+                        </h3>
                       </div>
                     ))}
                   </div>
@@ -162,16 +172,19 @@ const OurHistory: React.FC = () => {
           <div className="container mx-auto max-w-6xl">
             <ScrollAnimated animation="fadeInUp">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Global Presence</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Global Presence
+                </h2>
                 <p className="text-lg text-gray-600 mb-12">
-                  To better serve our global clientele, we have strategically established offices in key markets
+                  To better serve our global clientele, we have strategically
+                  established offices in key markets
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8">
                   {offices.map((country, index) => (
-                    <ScrollAnimated 
-                      key={index} 
-                      animation="fadeInUp" 
+                    <ScrollAnimated
+                      key={index}
+                      animation="fadeInUp"
                       delay={index * 0.2}
                     >
                       <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
@@ -181,9 +194,16 @@ const OurHistory: React.FC = () => {
                         </h3>
                         <div className="space-y-4">
                           {country.locations.map((location, locationIndex) => (
-                            <div key={locationIndex} className="border-l-4 border-blue-200 pl-4">
-                              <h4 className="font-medium text-gray-900">{location.city}</h4>
-                              <p className="text-sm text-gray-600">{location.address}</p>
+                            <div
+                              key={locationIndex}
+                              className="border-l-4 border-blue-200 pl-4"
+                            >
+                              <h4 className="font-medium text-gray-900">
+                                {location.city}
+                              </h4>
+                              <p className="text-sm text-gray-600">
+                                {location.address}
+                              </p>
                             </div>
                           ))}
                         </div>
@@ -201,49 +221,22 @@ const OurHistory: React.FC = () => {
           <div className="container mx-auto max-w-4xl">
             <ScrollAnimated animation="fadeInUp">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Partnership Philosophy</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Partnership Philosophy
+                </h2>
                 <div className="bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8">
                   <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                    At Jairosoft, we cultivate <strong className="text-blue-600">long-term partnerships</strong> built on 
-                    trust, reliability, and shared success. By consistently delivering high-quality software solutions 
-                    and outstanding customer service, we strive to be the preferred technology partner for businesses 
-                    looking to thrive in today's competitive landscape.
+                    At Jairosoft, we cultivate{" "}
+                    <strong className="text-blue-600">
+                      long-term partnerships
+                    </strong>{" "}
+                    built on trust, reliability, and shared success. By
+                    consistently delivering high-quality software solutions and
+                    outstanding customer service, we strive to be the preferred
+                    technology partner for businesses looking to thrive in
+                    today's competitive landscape.
                   </p>
                 </div>
-              </div>
-            </ScrollAnimated>
-          </div>
-        </section>
-
-        {/* Technology Partners */}
-        <section className="py-20 px-6 bg-gray-900">
-          <div className="container mx-auto max-w-6xl">
-            <ScrollAnimated animation="fadeInUp">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-white mb-4">
-                  Technology Partners
-                </h2>
-                <p className="text-lg text-gray-300">
-                  Powered by industry-leading partnerships and certifications
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-center gap-12">
-                {partnerships.map((partner, index) => (
-                  <ScrollAnimated 
-                    key={index} 
-                    animation="fadeInUp" 
-                    delay={index * 0.1}
-                  >
-                    <div className="flex items-center justify-center">
-                      <img
-                        src={partner.logo}
-                        alt={`${partner.name} logo`}
-                        className="h-12 w-auto opacity-80 hover:opacity-100 transition-opacity"
-                      />
-                    </div>
-                  </ScrollAnimated>
-                ))}
               </div>
             </ScrollAnimated>
           </div>
@@ -257,7 +250,8 @@ const OurHistory: React.FC = () => {
                 Join Our Journey
               </h2>
               <p className="text-xl text-red-100 mb-8">
-                Partner with us to create innovative solutions that drive lasting value and business success.
+                Partner with us to create innovative solutions that drive
+                lasting value and business success.
               </p>
               <a
                 href="mailto:info@jairosoft.com"
