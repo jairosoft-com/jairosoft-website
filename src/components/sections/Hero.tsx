@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
   };
 
   const isDropdownActive = (paths: string[]) => {
-    return paths.some(path => location.pathname.startsWith(path));
+    return paths.some((path) => location.pathname.startsWith(path));
   };
 
   const toggleMobileMenu = () => {
@@ -79,7 +79,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <a 
+                  <a
                     href="/what-we-do"
                     className={cn(
                       "text-sm px-4 py-2 inline-block transition-colors relative",
@@ -93,7 +93,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger 
+                <NavigationMenuTrigger
                   className={cn(
                     isDropdownActive(["/who-we-serve"])
                       ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
@@ -106,14 +106,20 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                   <ul className="w-[300px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-serve/industries-testimonials">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-serve/industries-testimonials"
+                        >
                           Industries & Testimonials
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-serve/naics">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-serve/naics"
+                        >
                           NAICS
                         </a>
                       </NavigationMenuLink>
@@ -122,7 +128,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger 
+                <NavigationMenuTrigger
                   className={cn(
                     isDropdownActive(["/who-we-are"])
                       ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
@@ -135,49 +141,70 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                   <ul className="w-[300px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/our-history">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-are/our-history"
+                        >
                           Our History
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/mission-vision-culture">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-are/mission-vision-culture"
+                        >
                           Mission, Vision & Culture
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/code-of-conduct">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-are/code-of-conduct"
+                        >
                           Code of Business Conduct
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/executive-leadership">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-are/executive-leadership"
+                        >
                           Executive Leadership
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/technical-leads">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-are/technical-leads"
+                        >
                           Technical Leads & Certified Experts
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/partners">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-are/partners"
+                        >
                           Partners
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/locations">
+                        <a
+                          className="block text-sm hover:underline focus:underline focus:outline-none"
+                          href="/who-we-are/locations"
+                        >
                           Locations
                         </a>
                       </NavigationMenuLink>
@@ -187,7 +214,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <a 
+                  <a
                     href="/careers"
                     className={cn(
                       "text-sm px-4 py-2 inline-block transition-colors relative",
@@ -202,7 +229,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <a 
+                  <a
                     href="/contact-us"
                     className={cn(
                       "text-sm px-4 py-2 inline-block transition-colors relative",
@@ -223,7 +250,11 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
         <div className="md:hidden flex items-center gap-4">
           <button
             onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              isMobileMenuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
             aria-expanded={isMobileMenuOpen}
             className="p-2 text-black hover:bg-black/10 rounded-md transition-colors"
           >
@@ -249,12 +280,14 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
         {/* Mobile Menu Panel */}
         <div
           className={`md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-50 ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="p-6">
             <div className="flex items-center justify-between mb-8">
-              <span className="font-brand font-extrabold text-xl text-black">Menu</span>
+              <span className="font-brand font-extrabold text-xl text-black">
+                Menu
+              </span>
               <button
                 onClick={closeMobileMenu}
                 aria-label="Close navigation menu"
@@ -276,7 +309,9 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 </li>
                 <li>
                   <div className="space-y-3">
-                    <span className="block text-lg font-medium text-black">Who We Serve</span>
+                    <span className="block text-lg font-medium text-black">
+                      Who We Serve
+                    </span>
                     <div className="pl-4 space-y-2">
                       <a
                         href="/who-we-serve/industries-testimonials"
@@ -297,7 +332,9 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 </li>
                 <li>
                   <div className="space-y-3">
-                    <span className="block text-lg font-medium text-black">Who We Are</span>
+                    <span className="block text-lg font-medium text-black">
+                      Who We Are
+                    </span>
                     <div className="pl-4 space-y-2">
                       <a
                         href="/who-we-are/our-history"
@@ -397,7 +434,7 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 className="w-full sm:w-auto"
                 asChild
               >
-                <a href="#contact" aria-label={cta}>
+                <a href="/contact-us" aria-label={cta}>
                   {cta}
                 </a>
               </Button>
@@ -407,7 +444,10 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 className="w-full sm:w-auto"
                 asChild
               >
-                <a href="#services" aria-label="Explore our services">
+                <a
+                  href="/who-we-serve/industries-testimonials"
+                  aria-label="Explore our services"
+                >
                   Explore Services
                 </a>
               </Button>
