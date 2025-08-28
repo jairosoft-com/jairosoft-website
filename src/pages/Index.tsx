@@ -33,10 +33,10 @@ const Index: React.FC = () => {
           cta="Talk to an Expert"
         />
         <Services />
-        <Industries />
+        {/* <Industries />
         <Timeline />
         <Testimonials />
-        <Logos />
+        <Logos /> */}
         <QuizCTA />
         {/* <Insights /> */}
         <Contact />

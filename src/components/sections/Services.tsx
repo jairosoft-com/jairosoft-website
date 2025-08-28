@@ -8,7 +8,7 @@ const services = [
     label: "Team Augmentation",
     name: "Build Your Own Agile Team.",
     description:
-      "Plug in elite development teams instantly. Scalable, enterprise-ready talent aligned with your goals.",
+      "Plug in elite development teams instantly. Scalable, enterprise-ready talent aligned with you.",
   },
   {
     label: "Sitecore XP / XM",
@@ -39,7 +39,7 @@ const Services: React.FC = () => {
           Let's Start <span className="text-primary">Simple.</span>
         </h2>
       </div>
-      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+      <div className="mx-auto max-w-6xl mt-10 grid gap-6 lg:grid-cols-3">
         {services.map((s, i) => {
           const bg =
             i === 0 ? "bg-brand-blue" : i === 1 ? "bg-accent" : "bg-black";
@@ -70,7 +70,7 @@ const Services: React.FC = () => {
                     {s.description}
                   </p>
                   <a
-                    href="#contact"
+                    href="/what-we-do"
                     className="mt-4 inline-block text-sm font-medium text-primary-foreground/90 underline-offset-4 hover:underline"
                   >
                     Learn More

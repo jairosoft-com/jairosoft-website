@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -20,6 +22,18 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
+  };
+
+  const isDropdownActive = (paths: string[]) => {
+    return paths.some(path => location.pathname.startsWith(path));
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -64,13 +78,43 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Industries</NavigationMenuTrigger>
+                <NavigationMenuLink asChild>
+                  <a 
+                    href="/what-we-do"
+                    className={cn(
+                      "text-sm px-4 py-2 inline-block transition-colors relative",
+                      isActive("/what-we-do")
+                        ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
+                        : "text-foreground/80 hover:text-foreground"
+                    )}
+                  >
+                    What We Do
+                  </a>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  className={cn(
+                    isDropdownActive(["/who-we-serve"])
+                      ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
+                      : ""
+                  )}
+                >
+                  Who We Serve
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
+                  <ul className="w-[300px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#industries">
-                          All Industries
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-serve/industries-testimonials">
+                          Industries & Testimonials
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-serve/naics">
+                          NAICS
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -78,13 +122,63 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
+                <NavigationMenuTrigger 
+                  className={cn(
+                    isDropdownActive(["/who-we-are"])
+                      ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
+                      : ""
+                  )}
+                >
+                  Who We Are
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
+                  <ul className="w-[300px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#services">
-                          Our Services
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/our-history">
+                          Our History
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/mission-vision-culture">
+                          Mission, Vision & Culture
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/code-of-conduct">
+                          Code of Business Conduct
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/executive-leadership">
+                          Executive Leadership
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/technical-leads">
+                          Technical Leads & Certified Experts
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/partners">
+                          Partners
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/locations">
+                          Locations
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -92,46 +186,34 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Insights</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#insights">
-                          Latest Articles
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
+                <NavigationMenuLink asChild>
+                  <a 
+                    href="/careers"
+                    className={cn(
+                      "text-sm px-4 py-2 inline-block transition-colors relative",
+                      isActive("/careers")
+                        ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
+                        : "text-foreground/80 hover:text-foreground"
+                    )}
+                  >
+                    Careers
+                  </a>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Results</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#testimonials">
-                          Client Stories
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>About</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="w-[260px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="#contact">
-                          Contact Us
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
+                <NavigationMenuLink asChild>
+                  <a 
+                    href="/contact-us"
+                    className={cn(
+                      "text-sm px-4 py-2 inline-block transition-colors relative",
+                      isActive("/contact-us")
+                        ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
+                        : "text-foreground/80 hover:text-foreground"
+                    )}
+                  >
+                    Contact Us
+                  </a>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -185,47 +267,106 @@ const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
               <ul className="space-y-6">
                 <li>
                   <a
-                    href="#industries"
+                    href="/what-we-do"
                     onClick={closeMobileMenu}
                     className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
                   >
-                    Industries
+                    What We Do
+                  </a>
+                </li>
+                <li>
+                  <div className="space-y-3">
+                    <span className="block text-lg font-medium text-black">Who We Serve</span>
+                    <div className="pl-4 space-y-2">
+                      <a
+                        href="/who-we-serve/industries-testimonials"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Industries & Testimonials
+                      </a>
+                      <a
+                        href="/who-we-serve/naics"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        NAICS
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div className="space-y-3">
+                    <span className="block text-lg font-medium text-black">Who We Are</span>
+                    <div className="pl-4 space-y-2">
+                      <a
+                        href="/who-we-are/our-history"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Our History
+                      </a>
+                      <a
+                        href="/who-we-are/mission-vision-culture"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Mission, Vision & Culture
+                      </a>
+                      <a
+                        href="/who-we-are/code-of-conduct"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Code of Business Conduct
+                      </a>
+                      <a
+                        href="/who-we-are/executive-leadership"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Executive Leadership
+                      </a>
+                      <a
+                        href="/who-we-are/technical-leads"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Technical Leads & Certified Experts
+                      </a>
+                      <a
+                        href="/who-we-are/partners"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Partners
+                      </a>
+                      <a
+                        href="/who-we-are/locations"
+                        onClick={closeMobileMenu}
+                        className="block text-base text-gray-600 hover:text-red-600 transition-colors"
+                      >
+                        Locations
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a
+                    href="/careers"
+                    onClick={closeMobileMenu}
+                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
+                  >
+                    Careers
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#services"
+                    href="/contact-us"
                     onClick={closeMobileMenu}
                     className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
                   >
-                    Solutions
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#insights"
-                    onClick={closeMobileMenu}
-                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
-                  >
-                    Insights
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#testimonials"
-                    onClick={closeMobileMenu}
-                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
-                  >
-                    Results
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#contact"
-                    onClick={closeMobileMenu}
-                    className="block text-lg font-medium text-black hover:text-red-600 transition-colors"
-                  >
-                    About
+                    Contact Us
                   </a>
                 </li>
               </ul>
