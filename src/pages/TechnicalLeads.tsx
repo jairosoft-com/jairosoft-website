@@ -175,7 +175,7 @@ const TechnicalLeads: React.FC = () => {
                 Work with our certified experts to build innovative solutions that drive your business forward.
               </p>
               <a
-                href="mailto:info@jairosoft.com"
+                href="/contact-us"
                 className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Connect With Our Technical Team

@@ -133,7 +133,7 @@ const ExecutiveLeadership: React.FC = () => {
                 Connect with our leadership team to discuss your next project or partnership opportunity.
               </p>
               <a
-                href="mailto:info@jairosoft.com"
+                href="/contact-us"
                 className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Contact Leadership

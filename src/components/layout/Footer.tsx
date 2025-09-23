@@ -203,7 +203,7 @@ const Footer: React.FC = () => {
               <div>
                 <p className="font-semibold text-foreground/90">Email</p>
                 <a
-                  href="mailto:info@jairosoft.com"
+                  href="/contact-us"
                   className="text-muted-foreground hover:text-red-600 transition-colors"
                 >
                   info@jairosoft.com

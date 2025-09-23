@@ -294,7 +294,7 @@ const IndustriesTestimonials: React.FC = () => {
                 Let's discuss how our industry expertise can drive your business forward.
               </p>
               <a
-                href="mailto:info@jairosoft.com"
+                href="/contact-us"
                 className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Start Your Project

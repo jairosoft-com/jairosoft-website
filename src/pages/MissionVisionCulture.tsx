@@ -285,7 +285,7 @@ const MissionVisionCulture: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="mailto:info@jairosoft.com"
+                  href="/contact-us"
                   className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                 >
                   Partner With Us
