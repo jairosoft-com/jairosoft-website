@@ -142,6 +142,16 @@ const WhatWeDo = () => {
                         ))}
                       </ul>
                     </div>
+                    {(service.id === 1 || service.id === 2) && (
+                      <div className="mt-6">
+                        <a href={service.id === 1 ? "/low-code-no-code" : "/agile-safe"}>
+                          <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
+                            Learn More
+                            <ArrowRight className="h-4 w-4 ml-2" />
+                          </Button>
+                        </a>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </ScrollAnimated>
