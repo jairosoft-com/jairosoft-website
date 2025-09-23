@@ -6,6 +6,7 @@ interface PageHeaderProps {
   subtitle: string;
   backgroundType?: "gradient" | "pattern" | "solid";
   accentColor?: "red" | "blue" | "gray";
+  breadcrumb?: string;
   children?: React.ReactNode;
 }
 
@@ -14,8 +15,21 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   subtitle,
   backgroundType = "gradient",
   accentColor = "red",
+  breadcrumb,
   children
 }) => {
+  // Auto-determine breadcrumb based on current path if not provided
+  const getBreadcrumb = () => {
+    if (breadcrumb) return breadcrumb;
+
+    const path = window.location.pathname;
+    if (path.startsWith('/who-we-serve/')) return 'Who We Serve';
+    if (path.startsWith('/who-we-are/')) return 'Who We Are';
+    if (path === '/what-we-do' || path === '/agile-safe' || path === '/low-code-no-code') return 'What We Do';
+    if (path === '/careers') return 'Careers';
+    if (path === '/contact-us') return 'Contact';
+    return 'Jairosoft';
+  };
   const getBackgroundClasses = () => {
     switch (backgroundType) {
       case "pattern":
@@ -93,7 +107,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
             {/* Breadcrumb or Category Badge */}
             <div className="mb-6">
               <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
-                Who We Serve
+                {getBreadcrumb()}
               </span>
             </div>
             
