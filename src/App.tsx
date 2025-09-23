@@ -19,6 +19,7 @@ import Careers from "./pages/Careers";
 import WhatWeDo from "./pages/WhatWeDo";
 import AgileSafe from "./pages/AgileSafe";
 import LowCodeNoCode from "./pages/LowCodeNoCode";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/low-code-no-code" element={<LowCodeNoCode />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

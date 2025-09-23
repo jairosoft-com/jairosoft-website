@@ -290,8 +290,8 @@ const Footer: React.FC = () => {
             <a href="#" className="hover:text-red-600 transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-red-600 transition-colors">
-              Terms of Service
+            <a href="/terms-and-conditions" className="hover:text-red-600 transition-colors">
+              Terms and Conditions
             </a>
           </div>
         </div>
