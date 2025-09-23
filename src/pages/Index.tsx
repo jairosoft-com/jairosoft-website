@@ -37,7 +37,7 @@ const Index: React.FC = () => {
         <Timeline />
         <Testimonials />
         <Logos /> */}
-        <QuizCTA />
+        {/* <QuizCTA /> */}
         {/* <Insights /> */}
         <Contact />
       </main>
