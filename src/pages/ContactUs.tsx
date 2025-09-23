@@ -2,7 +2,13 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -21,7 +27,7 @@ const ContactUs = () => {
     phone: "",
     email: "",
     message: "",
-    agreeToPolicy: false
+    agreeToPolicy: false,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -33,23 +39,23 @@ const ContactUs = () => {
     {
       country: "🇺🇸 California, USA",
       address: "12584 Luna Road, Victorville CA 92392",
-      type: "Headquarters"
+      type: "Headquarters",
     },
     {
       country: "🇺🇸 Hawaii, USA",
       address: "1050 Queen Street #100 Honolulu, HI 96814 USA",
-      type: "Regional Office"
+      type: "Regional Office",
     },
     {
       country: "🇵🇭 Cebu, Philippines",
       address: "1049 M.J Cuenco Avenue Mabolo Cebu City 6000",
-      type: "Development Center"
+      type: "Development Center",
     },
     {
       country: "🇵🇭 Davao City, Philippines",
       address: "Holy Trinity Avenue, Holy Trinity Village, Cabantian 8000",
-      type: "Development Center"
-    }
+      type: "Development Center",
+    },
   ];
 
   const subjectOptions = [
@@ -59,7 +65,7 @@ const ContactUs = () => {
     "Nearshore/Offshore/Multi-shore",
     "AI and Machine Learning",
     "Platform Engineering",
-    "General Inquiry"
+    "General Inquiry",
   ];
 
   return (
@@ -72,7 +78,7 @@ const ContactUs = () => {
         icon={<Mail className="h-8 w-8" />}
         badges={[
           { text: "Global Presence", variant: "default" },
-          { text: "24/7 Support", variant: "secondary" }
+          { text: "24/7 Support", variant: "secondary" },
         ]}
       />
 
@@ -81,10 +87,13 @@ const ContactUs = () => {
           <ScrollAnimated>
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  Get in Touch
+                </h2>
                 <p className="text-gray-600 leading-relaxed">
-                  Use our contact form for all information requests or contact us directly using the contact information below. 
-                  Feel free to get in touch with us via email or phone.
+                  Use our contact form for all information requests or contact
+                  us directly using the contact information below. Feel free to
+                  get in touch with us via email or phone.
                 </p>
               </div>
 
@@ -93,7 +102,7 @@ const ContactUs = () => {
                   <Phone className="h-5 w-5 text-red-600" />
                   Phone Contact
                 </h3>
-                <p className="text-lg text-gray-700">📞 +1 (800)-881-8949</p>
+                <p className="text-lg text-gray-700">📞 +1 (800) 881-8949</p>
               </div>
 
               <div>
@@ -103,10 +112,15 @@ const ContactUs = () => {
                 </h3>
                 <div className="space-y-4">
                   {offices.map((office, index) => (
-                    <Card key={index} className="hover:shadow-md transition-shadow">
+                    <Card
+                      key={index}
+                      className="hover:shadow-md transition-shadow"
+                    >
                       <CardContent className="p-6">
                         <div className="flex items-start justify-between mb-2">
-                          <h4 className="font-semibold text-gray-900">{office.country}</h4>
+                          <h4 className="font-semibold text-gray-900">
+                            {office.country}
+                          </h4>
                           <Badge variant="outline" className="text-xs">
                             {office.type}
                           </Badge>
@@ -126,13 +140,18 @@ const ContactUs = () => {
                 <Mail className="h-5 w-5 text-red-600" />
                 Contact Form
               </h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Subject *
                   </label>
-                  <Select value={formData.subject} onValueChange={(value) => setFormData({...formData, subject: value})}>
+                  <Select
+                    value={formData.subject}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, subject: value })
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
@@ -153,7 +172,9 @@ const ContactUs = () => {
                     </label>
                     <Input
                       value={formData.firstName}
-                      onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                      onChange={(e) =>
+                        setFormData({ ...formData, firstName: e.target.value })
+                      }
                       placeholder="Your first name"
                       required
                     />
@@ -164,7 +185,9 @@ const ContactUs = () => {
                     </label>
                     <Input
                       value={formData.lastName}
-                      onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                      onChange={(e) =>
+                        setFormData({ ...formData, lastName: e.target.value })
+                      }
                       placeholder="Your last name"
                       required
                     />
@@ -177,7 +200,9 @@ const ContactUs = () => {
                   </label>
                   <Input
                     value={formData.company}
-                    onChange={(e) => setFormData({...formData, company: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, company: e.target.value })
+                    }
                     placeholder="Your company name"
                   />
                 </div>
@@ -190,7 +215,9 @@ const ContactUs = () => {
                     <Input
                       type="tel"
                       value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
                       placeholder="+1 (000) 000-0000"
                       required
                     />
@@ -202,7 +229,9 @@ const ContactUs = () => {
                     <Input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       placeholder="your.email@company.com"
                       required
                     />
@@ -215,7 +244,9 @@ const ContactUs = () => {
                   </label>
                   <Textarea
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     placeholder="Tell us about your project or inquiry..."
                     rows={4}
                     required
@@ -226,10 +257,16 @@ const ContactUs = () => {
                   <Checkbox
                     id="privacy"
                     checked={formData.agreeToPolicy}
-                    onCheckedChange={(checked) => setFormData({...formData, agreeToPolicy: !!checked})}
+                    onCheckedChange={(checked) =>
+                      setFormData({ ...formData, agreeToPolicy: !!checked })
+                    }
                   />
-                  <label htmlFor="privacy" className="text-sm text-gray-600 leading-relaxed">
-                    I agree to have my information stored according to the Privacy Policy.
+                  <label
+                    htmlFor="privacy"
+                    className="text-sm text-gray-600 leading-relaxed"
+                  >
+                    I agree to have my information stored according to the
+                    Privacy Policy.
                   </label>
                 </div>
 
@@ -250,19 +287,32 @@ const ContactUs = () => {
             <Globe className="h-12 w-12 mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-4">Follow Us Online</h3>
             <div className="flex justify-center space-x-6">
-              <a href="https://www.facebook.com/jairosoft.inc" className="hover:text-blue-200 transition-colors" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.facebook.com/jairosoft.inc"
+                className="hover:text-blue-200 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Facebook
               </a>
-              <a href="https://www.linkedin.com/company/jairosoft-inc/" className="hover:text-blue-200 transition-colors" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.linkedin.com/company/jairosoft-inc/"
+                className="hover:text-blue-200 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 LinkedIn
               </a>
-              <a href="https://www.instagram.com/jairosoft_inc/" className="hover:text-blue-200 transition-colors" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.instagram.com/jairosoft_inc/"
+                className="hover:text-blue-200 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Instagram
               </a>
             </div>
-            <p className="mt-4 text-blue-100">
-              Email: info@jairosoft.com
-            </p>
+            <p className="mt-4 text-blue-100">Email: info@jairosoft.com</p>
           </div>
         </ScrollAnimated>
       </div>
