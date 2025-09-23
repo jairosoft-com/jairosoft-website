@@ -45,8 +45,8 @@ const WhatWeDo = () => {
       title: "Digital Experience Platform (DXP)",
       description: "We specialize in creating integrated solutions that seamlessly manage and deliver personalized, engaging digital experiences across multiple channels. By combining content management, customer data, and powerful tools, we help businesses optimize their digital presence—whether it's for websites, mobile apps, e-commerce, or social media.",
       icon: <Monitor className="h-8 w-8" />,
-      status: "coming-soon",
-      statusText: "Coming Soon",
+      status: "available",
+      statusText: "Available",
       color: "from-purple-500 to-purple-600",
       features: ["Multi-channel experiences", "Content management", "Customer data integration", "Digital optimization"]
     },
@@ -55,8 +55,8 @@ const WhatWeDo = () => {
       title: "Nearshore/Offshore/Multi-Shore Resources",
       description: "We offer top-tier nearshore and offshore software development resources globally, providing both fully managed teams and skilled professionals to augment your existing development efforts. Our flexible solutions ensure seamless integration, enabling you to scale efficiently while maintaining the highest standards of quality and performance.",
       icon: <Globe className="h-8 w-8" />,
-      status: "coming-soon",
-      statusText: "Coming Soon",
+      status: "available",
+      statusText: "Available",
       color: "from-cyan-500 to-cyan-600",
       features: ["Global talent pool", "Flexible scaling", "Quality assurance", "Seamless integration"]
     },
@@ -65,8 +65,8 @@ const WhatWeDo = () => {
       title: "Platform Engineering",
       description: "Delivering end-to-end solutions that include full code development, DevOps integration, and robust architecture design. Our team specializes in building scalable, reliable platforms that enable seamless deployment and management of applications. By focusing on automation, system reliability, and performance optimization, we ensure your infrastructure is efficient and adaptable.",
       icon: <Cpu className="h-8 w-8" />,
-      status: "coming-soon",
-      statusText: "Coming Soon",
+      status: "available",
+      statusText: "Available",
       color: "from-orange-500 to-orange-600",
       features: ["DevOps integration", "Scalable architecture", "Automation focus", "Performance optimization"]
     },
@@ -75,15 +75,14 @@ const WhatWeDo = () => {
       title: "AI/ML",
       description: "We specialize in building intelligent systems that perform human-like tasks, from problem-solving to decision-making. By leveraging Machine Learning, we create solutions that continuously improve through data, delivering smarter automation and data-driven insights. Our expertise in AI/ML enables us to drive innovation and transform businesses with cutting-edge technology.",
       icon: <Brain className="h-8 w-8" />,
-      status: "coming-soon",
-      statusText: "Coming Soon",
+      status: "available",
+      statusText: "Available",
       color: "from-red-500 to-red-600",
       features: ["Intelligent systems", "Machine learning", "Data-driven insights", "Business transformation"]
     }
   ];
 
-  const availableServices = services.filter(service => service.status === 'available');
-  const comingSoonServices = services.filter(service => service.status === 'coming-soon');
+  const availableServices = services;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
@@ -112,16 +111,8 @@ const WhatWeDo = () => {
           </div>
         </ScrollAnimated>
 
-        {/* Available Services */}
+        {/* Services */}
         <div className="mb-16">
-          <ScrollAnimated>
-            <div className="flex items-center gap-3 mb-8">
-              <CheckCircle className="h-6 w-6 text-green-600" />
-              <h3 className="text-2xl font-bold text-gray-900">Available Now</h3>
-              <Badge className="bg-green-100 text-green-800">Ready to Deploy</Badge>
-            </div>
-          </ScrollAnimated>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {availableServices.map((service, index) => (
               <ScrollAnimated key={service.id} delay={index * 100}>
@@ -131,10 +122,6 @@ const WhatWeDo = () => {
                       <div className={`p-3 rounded-lg bg-gradient-to-r ${service.color} text-white`}>
                         {service.icon}
                       </div>
-                      <Badge className="bg-green-100 text-green-800 flex items-center gap-1">
-                        <CheckCircle className="h-3 w-3" />
-                        {service.statusText}
-                      </Badge>
                     </div>
                     <CardTitle className="text-xl text-gray-900 mb-3">
                       {service.title}
@@ -155,10 +142,6 @@ const WhatWeDo = () => {
                         ))}
                       </ul>
                     </div>
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                      Learn More
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Button>
                   </CardContent>
                 </Card>
               </ScrollAnimated>
@@ -166,55 +149,6 @@ const WhatWeDo = () => {
           </div>
         </div>
 
-        {/* Coming Soon Services */}
-        <div>
-          <ScrollAnimated>
-            <div className="flex items-center gap-3 mb-8">
-              <Clock className="h-6 w-6 text-blue-600" />
-              <h3 className="text-2xl font-bold text-gray-900">Coming Soon</h3>
-              <Badge className="bg-blue-100 text-blue-800">In Development</Badge>
-            </div>
-          </ScrollAnimated>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {comingSoonServices.map((service, index) => (
-              <ScrollAnimated key={service.id} delay={index * 100}>
-                <Card className="h-full hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-400 opacity-90">
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${service.color} text-white opacity-80`}>
-                        {service.icon}
-                      </div>
-                      <Badge variant="outline" className="border-blue-400 text-blue-600 flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        {service.statusText}
-                      </Badge>
-                    </div>
-                    <CardTitle className="text-lg text-gray-900 mb-3">
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-4 leading-relaxed text-sm">
-                      {service.description}
-                    </p>
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-gray-900 text-sm">Key Features:</h4>
-                      <ul className="space-y-1">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-xs text-gray-600">
-                            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScrollAnimated>
-            ))}
-          </div>
-        </div>
 
         {/* Call to Action */}
         <ScrollAnimated delay={400}>
@@ -224,10 +158,12 @@ const WhatWeDo = () => {
             <p className="text-lg mb-6 text-red-100">
               Let's discuss how our technology services can transform your business.
             </p>
-            <Button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3">
-              Contact Our Team
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
+            <a href="/contact-us">
+              <Button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3">
+                Contact Our Team
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </a>
           </div>
         </ScrollAnimated>
       </div>
