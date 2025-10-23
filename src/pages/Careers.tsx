@@ -22,7 +22,18 @@ import {
   Mail,
   Upload,
   Calendar,
+  CheckCircle,
+  XCircle,
 } from "lucide-react";
+import { submitInternshipForm, fileToBase64 } from "@/services/internship";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 const Careers = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -47,6 +58,10 @@ const Careers = () => {
     ojtCoordinatorEmail: "",
     agreeToPolicy: false,
   });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [dialogType, setDialogType] = React.useState<"success" | "error">("success");
+  const [dialogMessage, setDialogMessage] = React.useState("");
 
   type JobOpening = {
     title: string;
@@ -154,9 +169,73 @@ const Careers = () => {
     console.log("Employment verification submitted:", employmentForm);
   };
 
-  const handleInternshipSubmit = (e: React.FormEvent) => {
+  const handleInternshipSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Internship application submitted:", internshipForm);
+
+    if (!internshipForm.agreeToPolicy) {
+      setDialogType("error");
+      setDialogMessage("Please agree to the Privacy Policy to continue.");
+      setDialogOpen(true);
+      return;
+    }
+
+    if (!internshipForm.attachedFile) {
+      setDialogType("error");
+      setDialogMessage("Please attach the required documents (Resume, Cover Letter, Intent Letter, Portfolio) in a ZIP or RAR file.");
+      setDialogOpen(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Convert file to base64
+      const fileBase64 = await fileToBase64(internshipForm.attachedFile);
+
+      const result = await submitInternshipForm({
+        firstName: internshipForm.firstName,
+        lastName: internshipForm.lastName,
+        email: internshipForm.email,
+        school: internshipForm.school,
+        course: internshipForm.course,
+        renderTimeHours: internshipForm.renderTimeHours,
+        ojtCoordinatorName: internshipForm.ojtCoordinatorName,
+        ojtCoordinatorEmail: internshipForm.ojtCoordinatorEmail,
+        attachedFile: fileBase64,
+        fileName: internshipForm.attachedFile.name,
+        fileType: internshipForm.attachedFile.type,
+      });
+
+      // Show success dialog
+      setDialogType("success");
+      setDialogMessage("Thank you! Your internship application has been submitted successfully. We'll review it and get back to you soon.");
+      setDialogOpen(true);
+
+      // Reset form
+      setInternshipForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        school: "",
+        course: "",
+        renderTimeHours: "",
+        attachedFile: null,
+        ojtCoordinatorName: "",
+        ojtCoordinatorEmail: "",
+        agreeToPolicy: false,
+      });
+
+      console.log("Internship application submitted successfully:", result);
+    } catch (error) {
+      console.error("Internship submission error:", error);
+
+      // Show error dialog
+      setDialogType("error");
+      setDialogMessage("Failed to submit your internship application. Please try again or contact us directly at jit@jairosoft.com");
+      setDialogOpen(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -708,9 +787,9 @@ const Careers = () => {
                   <Button
                     type="submit"
                     className="w-full bg-red-600 hover:bg-red-700 text-white py-3"
-                    disabled={!internshipForm.agreeToPolicy}
+                    disabled={!internshipForm.agreeToPolicy || isSubmitting}
                   >
-                    Submit Internship Application
+                    {isSubmitting ? "Submitting..." : "Submit Internship Application"}
                   </Button>
                 </form>
               </div>
@@ -719,6 +798,39 @@ const Careers = () => {
         </Tabs>
       </div>
       <Footer />
+
+      {/* Success/Error Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center justify-center mb-4">
+              {dialogType === "success" ? (
+                <CheckCircle className="h-16 w-16 text-green-600" />
+              ) : (
+                <XCircle className="h-16 w-16 text-red-600" />
+              )}
+            </div>
+            <DialogTitle className="text-center text-xl">
+              {dialogType === "success" ? "Application Submitted!" : "Error"}
+            </DialogTitle>
+            <DialogDescription className="text-center text-base pt-2">
+              {dialogMessage}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-center">
+            <Button
+              onClick={() => setDialogOpen(false)}
+              className={
+                dialogType === "success"
+                  ? "bg-green-600 hover:bg-green-700"
+                  : "bg-red-600 hover:bg-red-700"
+              }
+            >
+              OK
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
