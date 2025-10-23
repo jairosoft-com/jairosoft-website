@@ -16,7 +16,16 @@ import { ScrollAnimated } from "@/components/ui/ScrollAnimated";
 import PageHeader from "@/components/ui/PageHeader";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
-import { MapPin, Phone, Mail, Building2, Globe } from "lucide-react";
+import { MapPin, Phone, Mail, Building2, Globe, CheckCircle, XCircle } from "lucide-react";
+import { submitContactForm } from "@/services/contact";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 const ContactUs = () => {
   const [formData, setFormData] = React.useState({
@@ -29,10 +38,62 @@ const ContactUs = () => {
     message: "",
     agreeToPolicy: false,
   });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [dialogType, setDialogType] = React.useState<"success" | "error">("success");
+  const [dialogMessage, setDialogMessage] = React.useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    if (!formData.agreeToPolicy) {
+      setDialogType("error");
+      setDialogMessage("Please agree to the Privacy Policy to continue.");
+      setDialogOpen(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitContactForm({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        subject: formData.subject,
+        message: formData.message,
+      });
+
+      // Show success dialog
+      setDialogType("success");
+      setDialogMessage("Thank you! Your message has been sent successfully. We'll get back to you as soon as possible.");
+      setDialogOpen(true);
+
+      // Reset form
+      setFormData({
+        subject: "",
+        firstName: "",
+        lastName: "",
+        company: "",
+        phone: "",
+        email: "",
+        message: "",
+        agreeToPolicy: false,
+      });
+
+      console.log("Submission successful:", result);
+    } catch (error) {
+      console.error("Form submission error:", error);
+
+      // Show error dialog
+      setDialogType("error");
+      setDialogMessage("Failed to send your message. Please try again or contact us directly at info@jairosoft.com");
+      setDialogOpen(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const offices = [
@@ -273,9 +334,9 @@ const ContactUs = () => {
                 <Button
                   type="submit"
                   className="w-full bg-red-600 hover:bg-red-700 text-white py-3"
-                  disabled={!formData.agreeToPolicy}
+                  disabled={!formData.agreeToPolicy || isSubmitting}
                 >
-                  Submit
+                  {isSubmitting ? "Sending..." : "Submit"}
                 </Button>
               </form>
             </div>
@@ -317,6 +378,39 @@ const ContactUs = () => {
         </ScrollAnimated>
       </div>
       <Footer />
+
+      {/* Success/Error Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center justify-center mb-4">
+              {dialogType === "success" ? (
+                <CheckCircle className="h-16 w-16 text-green-600" />
+              ) : (
+                <XCircle className="h-16 w-16 text-red-600" />
+              )}
+            </div>
+            <DialogTitle className="text-center text-xl">
+              {dialogType === "success" ? "Message Sent!" : "Error"}
+            </DialogTitle>
+            <DialogDescription className="text-center text-base pt-2">
+              {dialogMessage}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-center">
+            <Button
+              onClick={() => setDialogOpen(false)}
+              className={
+                dialogType === "success"
+                  ? "bg-green-600 hover:bg-green-700"
+                  : "bg-red-600 hover:bg-red-700"
+              }
+            >
+              OK
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
