@@ -10,43 +10,43 @@ const TechnicalLeads: React.FC = () => {
     {
       name: "Karl Jordan Caumban",
       position: "Agile Project Manager",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743735203528x917088806508847900/Caumban%2C%20Karl.jfif",
+      image: "/images/team/karl-caumban.jpg",
       icon: "👨‍💼"
     },
     {
       name: "John Paul Catubig",
       position: "Product Manager",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743735252224x772237535318115500/Catubig%2C%20John%20Paul.jpg",
+      image: "/images/team/john-paul-catubig.jpg",
       icon: "👨‍💼"
     },
     {
       name: "Bomar Sinday",
       position: "Software Development Manager",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743735326994x102659480505900020/%28Selected%29%20DSC_0073-2.jpg",
+      image: "/images/team/bomar-sinday.jpg",
       icon: "👨‍💼"
     },
     {
       name: "Adam Vincent Bernaldez",
       position: "Principal Software Supervisor",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743736805683x364296015345688600/Adam%20Vincent%20Bernaldez%20%28GoHealth%20Project%20Lead%29.png",
+      image: "/images/team/adam-bernaldez.png",
       icon: "👨‍💼"
     },
     {
       name: "Ryan Vince Castillo",
       position: "Line Manager",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743735445021x221799476506544500/%28Selected%29%20DSC_0092-2.jpg",
+      image: "/images/team/ryan-castillo.jpg",
       icon: "👨‍💼"
     },
     {
       name: "Cindy Arrogancia",
       position: "QA Lead",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743736791746x753480723329094300/Arrogancia%2C%20Cindy%20-%20ID.png",
+      image: "/images/team/cindy-arrogancia.png",
       icon: "👩‍💼"
     },
     {
       name: "Mary Grace Garcia",
       position: "Program Manager",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743735574828x225243451021794660/%28Selected%29%20DSC_0163.jpg",
+      image: "/images/team/mary-grace-garcia.jpg",
       icon: "👩‍💼"
     }
   ];

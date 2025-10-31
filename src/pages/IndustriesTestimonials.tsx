@@ -10,42 +10,42 @@ const IndustriesTestimonials: React.FC = () => {
     {
       name: "EdTech",
       description: "Education Technology",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=67,f=auto,dpr=1,fit=contain/f1744355012598x445297251750725200/EdTech.png"
+      logo: "/images/industries/edtech.png"
     },
     {
       name: "FinTech",
       description: "Financial Technology",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=60,f=auto,dpr=1,fit=contain/f1744355030784x415356904467270000/Frame%201321317425.png"
+      logo: "/images/industries/fintech.png"
     },
     {
       name: "Healthcare",
       description: "Medical solutions and healthcare systems",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=150,f=auto,dpr=1,fit=contain/f1744355061333x107237850371817220/Medical_Logo_Vector_Art__Icons__and_Graphics_for_Free_Download-removebg-preview%201.png"
+      logo: "/images/industries/healthcare.png"
     },
     {
       name: "Real Estate",
       description: "Real estate management and platforms",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=163,f=auto,dpr=1,fit=contain/f1744355098478x562370807655649100/real_estate_logotype-removebg-preview%201.png"
+      logo: "/images/industries/real-estate.png"
     },
     {
       name: "AI/ML",
       description: "Artificial Intelligence and Machine Learning",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=128,h=115,f=auto,dpr=1,fit=contain/f1744355116893x922131614088428400/Premium_Vector___Artificial_intelligence_logo_artificial_intelligence_and_machine_learning_concept_vector_symbol_ai_n-removebg-preview%201.png"
+      logo: "/images/industries/ai-ml.png"
     },
     {
       name: "Enterprise Solutions",
       description: "Business and enterprise applications",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=204,f=auto,dpr=1,fit=contain/f1744355139027x218473346566765440/Frame%201321317426.png"
+      logo: "/images/industries/enterprise.png"
     },
     {
       name: "E-commerce",
       description: "Online commerce platforms",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=178,f=auto,dpr=1,fit=contain/f1744355158699x124782790621624780/Frame%201321317427.png"
+      logo: "/images/industries/ecommerce.png"
     },
     {
       name: "Fitness & Health",
       description: "Fitness and wellness applications",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=112,f=auto,dpr=1,fit=contain/f1744355177278x321388532135853200/Gym_motivation-removebg-preview%201.png"
+      logo: "/images/industries/fitness.png"
     }
   ];
 
@@ -54,7 +54,7 @@ const IndustriesTestimonials: React.FC = () => {
       name: "Peter Stevenson",
       company: "TruSpace",
       rating: 4.5,
-      companyLogo: "https://37d1616933978a76612a31f50223d224.cdn.bubble.io/f1739862490644x266805474781033570/truspace-logo.svg",
+      companyLogo: "/images/logos/truspace.svg",
       testimonial: "It's always been an incredible journey working with them, and their unwavering support has made us feel like we're soaring on cloud nine. Their passion for innovation and commitment to excellence perfectly align with our own values, making this partnership a true match made in tech heaven. We couldn't be more grateful to have them on board, and we look forward to continuing this wonderful journey together, creating amazing solutions and achieving new heights of success side by side. It's my absolute pleasure to recommend Ramon Aseniero as a Sitecore Architect. Ramon and I have worked on a couple of Sitecore implementation projects since August 2015, i.e. Circus de Soleil's website, NASA Kennedy Space Center's website, HomeFundMe.com, VITAS Healthcare's website, John Hopkins Hospital's website to name a few.",
       projects: [
         "Circus de Soleil's website",
@@ -68,7 +68,7 @@ const IndustriesTestimonials: React.FC = () => {
       name: "Mia Peroff",
       company: "NARRA",
       rating: 5,
-      companyLogo: "https://37d1616933978a76612a31f50223d224.cdn.bubble.io/f1739862568977x824568793398957800/narra-logo.svg",
+      companyLogo: "/images/logos/narra.svg",
       testimonial: "I met Ramon through a conference, where we instantly connected. A month after, we were working on a project together. The decision to go with Jairosoft was easy to make as they were very open to working with us and our budget, defining the right project scope. During our first project together, they consistently delivered on their promises, and were always open to improving processes for better efficiency. Beyond their technical expertise, their great communication skills and friendly approach made the collaboration enjoyable. Highly recommend!"
     }
   ];

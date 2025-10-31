@@ -14,9 +14,9 @@ const Locations: React.FC = () => {
       description:
         "Located in the peaceful city of Victorville, California, our Jairosoft office offers a unique home-like ambiance that sets it apart. Designed to feel welcoming and comfortable, the space blends professional functionality with the warmth of a home environment—making it easy to focus, collaborate, and feel at ease.",
       images: [
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=682,f=auto,dpr=1,fit=contain/f1743725815202x212733845269365440/IMG_1970%202.png",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=350,f=auto,dpr=1,fit=contain/f1743725846975x524736228634360200/IMG_9511%202.png",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=300,f=auto,dpr=1,fit=contain/f1743725854599x155476058348939620/IMG_9512%202.png",
+        "/images/locations/california-1.png",
+        "/images/locations/california-2.png",
+        "/images/locations/california-3.png",
       ],
     },
     {
@@ -26,9 +26,9 @@ const Locations: React.FC = () => {
       description:
         "Our Jairosoft Hawaii office is located within a dynamic co-working space that reflects the energy and creativity of the islands. Surrounded by like-minded professionals and innovative startups, the environment encourages collaboration, fresh ideas, and flexible workstyles.",
       images: [
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=682,f=auto,dpr=1,fit=contain/f1743737683574x709333244540311800/59445206_442273856346352_1560601977891586048_n.jpg",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=350,f=auto,dpr=1,fit=contain/f1743750286944x825008433809299800/Entrepreneurs%2BSandbox%2BHawaii%2BConference%2BRoom.jpg",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=300,f=auto,dpr=1,fit=contain/f1743750291934x738421185651660000/1c9f14a65f19531e7efc36370aed4f29_o.jpg",
+        "/images/locations/hawaii-1.jpg",
+        "/images/locations/hawaii-2.jpg",
+        "/images/locations/hawaii-3.jpg",
       ],
     },
     {
@@ -38,9 +38,9 @@ const Locations: React.FC = () => {
       description:
         "Strategically located in the heart of Cebu City, the Jairosoft office offers the perfect balance of accessibility and convenience. Surrounded by key business hubs, dining spots, and transportation links, our location puts us right where the action is.",
       images: [
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=682,f=auto,dpr=1,fit=contain/f1743743287961x108489597660044620/Jairosoft%20%28Cebu%29.jpg",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=350,f=auto,dpr=1,fit=contain/f1743749899233x286855616121608260/Open%20photo%20%281%29.jpg",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=300,f=auto,dpr=1,fit=contain/f1743749913374x621168450694938200/Open%20photo.jpg",
+        "/images/locations/cebu-1.jpg",
+        "/images/locations/cebu-2.jpg",
+        "/images/locations/cebu-3.jpg",
       ],
     },
     {
@@ -51,9 +51,9 @@ const Locations: React.FC = () => {
       description:
         "Nestled in the heart of Davao, the Jairosoft office embodies a perfect balance of nature and contemporary design. Surrounded by lush greenery, our workspace offers a refreshing environment that fosters creativity, productivity, and well-being.",
       images: [
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=682,f=auto,dpr=1,fit=contain/f1743725815202x212733845269365440/IMG_1970%202.png",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=350,f=auto,dpr=1,fit=contain/f1743725846975x524736228634360200/IMG_9511%202.png",
-        "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=256,h=300,f=auto,dpr=1,fit=contain/f1743725854599x155476058348939620/IMG_9512%202.png",
+        "/images/locations/california-1.png",
+        "/images/locations/california-2.png",
+        "/images/locations/california-3.png",
       ],
     },
   ];

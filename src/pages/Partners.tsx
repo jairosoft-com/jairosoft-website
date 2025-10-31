@@ -9,22 +9,22 @@ const Partners: React.FC = () => {
   const premierPartners = [
     {
       name: "Scaled Agile Partner",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1744354687488x391487766617957700/scaled%20agile%20partner.png",
+      logo: "/images/partners/scaled-agile-partner.png",
       category: "Methodology"
     },
     {
       name: "Sitecore Silver Partner",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1744354708871x756979420750852200/sitecore%20silver%20partner.png",
+      logo: "/images/partners/sitecore-silver-partner.png",
       category: "CMS Platform"
     },
     {
       name: "Microsoft",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1744354809493x159773946293163330/microsoft.png",
+      logo: "/images/partners/microsoft.png",
       category: "Cloud & Development"
     },
     {
       name: "Google Partner",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1745293617393x258946384528928600/37ce2e307e48f5f9c6219281539334cd.png",
+      logo: "/images/partners/google-partner.png",
       category: "Cloud Services"
     }
   ];
@@ -32,53 +32,53 @@ const Partners: React.FC = () => {
   const developmentTools = [
     {
       name: "React",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743581499599x658634377667592400/react.png"
+      logo: "/images/partners/react.png"
     },
     {
       name: "Angular JS",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743581289102x280094664450745150/angular%20js.png"
+      logo: "/images/partners/angular.png"
     },
     {
       name: "Node.js",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1744703114343x165456915525347600/nodes.png"
+      logo: "/images/partners/nodejs.png"
     },
     {
       name: "Java",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743581561329x360993837104345300/java.png"
+      logo: "/images/partners/java.png"
     },
     {
       name: "Python",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743581486864x717836059627198600/python.png"
+      logo: "/images/partners/python.png"
     }
   ];
 
   const infrastructure = [
     {
       name: "Docker",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1744702895176x644516564836209700/docker.png"
+      logo: "/images/partners/docker.png"
     },
     {
       name: "Kubernetes",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743581571444x105768541288918430/kubernetes.png"
+      logo: "/images/partners/kubernetes.png"
     },
     {
       name: "Kafka",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743581528439x457330281214968640/kafka.png"
+      logo: "/images/partners/kafka.png"
     },
     {
       name: "Redis",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743581434821x609141132806176400/redis.png"
+      logo: "/images/partners/redis.png"
     }
   ];
 
   const databases = [
     {
       name: "Oracle Database",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1744702834731x249097634269767940/oracle%20database.png"
+      logo: "/images/partners/oracle.png"
     },
     {
       name: "MongoDB",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=192,h=192,f=auto,dpr=1,fit=contain/f1743582630829x819886960728118300/mongo%20DB.png"
+      logo: "/images/partners/mongodb.png"
     }
   ];
 

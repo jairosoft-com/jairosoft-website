@@ -6,23 +6,23 @@ const Footer: React.FC = () => {
   const partnerships = [
     {
       name: "SAFe Partnership",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998678646x539598771628142300/SAFe%20Partnership%20Badge%201.svg",
+      logo: "/images/logos/safe-partnership.svg",
     },
     {
       name: "Sitecore",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998709205x254204165927421900/sitecore.svg",
+      logo: "/images/logos/sitecore.svg",
     },
     {
       name: "AWS",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998656423x664597898014441900/aws.svg",
+      logo: "/images/logos/aws.svg",
     },
     {
       name: "Microsoft",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998592690x392237184079143000/microsoft.svg",
+      logo: "/images/logos/microsoft.svg",
     },
     {
       name: "Google Partner",
-      logo: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/f1745998547625x104302073671369560/google%20partner.svg",
+      logo: "/images/logos/google-partner.svg",
     },
   ];
 

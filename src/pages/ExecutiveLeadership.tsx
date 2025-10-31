@@ -10,19 +10,19 @@ const ExecutiveLeadership: React.FC = () => {
     {
       name: "Ramon Aseniero",
       position: "Chief Executive Officer & Founder",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743734226232x254955912633038530/Ramon%20Aseniero%20%28CEO%29.jpg",
+      image: "/images/team/ramon-aseniero-ceo.jpg",
       icon: "👨‍💼"
     },
     {
       name: "Aldred Donayre",
       position: "Chief Operating Officer",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743734191383x180637826392007420/Aldred%20Jay%20Donayre%20%28COO%29.jpg",
+      image: "/images/team/aldred-donayre-coo.jpg",
       icon: "👨‍💼"
     },
     {
       name: "Marikriss Aseniero",
       position: "Chief Finance Officer",
-      image: "https://d34e910e9c4f6a4df0791b0a9b6b7141.cdn.bubble.io/cdn-cgi/image/w=512,h=601,f=auto,dpr=1,fit=contain/f1743734322262x430480707929413950/Ma%27am%20Mari%20Kriss%20Aseniero.jpg",
+      image: "/images/team/marikriss-aseniero-cfo.jpg",
       icon: "👩‍💼"
     }
   ];
