@@ -1,50 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/ui/PageHeader";
 import { ScrollAnimated } from "@/components/ui/ScrollAnimated";
-import { Star, Users, Target, TrendingUp } from "lucide-react";
+import { Star, Users, Target, TrendingUp, X } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const IndustriesTestimonials: React.FC = () => {
+  const [selectedIndustry, setSelectedIndustry] = useState<{
+    name: string;
+    description: string;
+    detailedDescription: string;
+    logo: string;
+  } | null>(null);
+
   const industries = [
     {
       name: "EdTech",
       description: "Education Technology",
+      detailedDescription: "We help education providers transform traditional learning into dynamic digital experiences—building robust learning management systems, virtual classrooms, and scalable content platforms to enhance engagement and accessibility.",
       logo: "/images/industries/edtech.png"
     },
     {
-      name: "FinTech",
-      description: "Financial Technology",
-      logo: "/images/industries/fintech.png"
+      name: "Sales and E-Commerce",
+      description: "Online commerce platforms",
+      detailedDescription: "Our solutions power seamless customer journeys—from product discovery to checkout. We create secure, high-performing e-commerce platforms and sales tools that drive conversions, automate workflows, and personalize the buyer experience.",
+      logo: "/images/industries/ecommerce.png"
     },
     {
       name: "Healthcare",
       description: "Medical solutions and healthcare systems",
+      detailedDescription: "Jairosoft delivers HIPAA-compliant, AI-enhanced solutions for hospitals, clinics, and healthcare startups—optimizing patient data systems, care delivery, and operational workflows with a focus on privacy and user experience.",
       logo: "/images/industries/healthcare.png"
     },
     {
       name: "Real Estate",
       description: "Real estate management and platforms",
+      detailedDescription: "From virtual tours to property management portals, we provide real estate firms with custom platforms that streamline listings, enhance client interactions, and enable data-driven decisions for agents and buyers alike.",
       logo: "/images/industries/real-estate.png"
     },
     {
-      name: "AI/ML",
-      description: "Artificial Intelligence and Machine Learning",
+      name: "Artificial Intelligence",
+      description: "AI-driven solutions",
+      detailedDescription: "We engineer AI-driven tools that automate business processes, enhance decision-making, and uncover actionable insights—empowering companies to innovate with confidence and precision.",
       logo: "/images/industries/ai-ml.png"
     },
     {
-      name: "Enterprise Solutions",
-      description: "Business and enterprise applications",
-      logo: "/images/industries/enterprise.png"
+      name: "Machine Learning",
+      description: "Predictive analytics and ML systems",
+      detailedDescription: "Our ML solutions fuel smarter systems—from predictive analytics to recommendation engines—enabling businesses to anticipate needs, improve performance, and create personalized user experiences.",
+      logo: "/images/industries/machine-learning.png"
     },
     {
-      name: "E-commerce",
-      description: "Online commerce platforms",
-      logo: "/images/industries/ecommerce.png"
+      name: "Telecommunication",
+      description: "Telecom infrastructure and platforms",
+      detailedDescription: "We help telecom providers scale efficiently through modern platforms that support network performance, customer service portals, subscription management, and integrated analytics.",
+      logo: "/images/industries/telecom.png"
     },
     {
-      name: "Fitness & Health",
+      name: "Fitness",
       description: "Fitness and wellness applications",
+      detailedDescription: "From gym management software to mobile fitness apps, we build platforms that support user engagement, workout tracking, virtual training, and personalized wellness programs—bringing fitness goals to life digitally.",
       logo: "/images/industries/fitness.png"
     }
   ];
@@ -153,7 +175,10 @@ const IndustriesTestimonials: React.FC = () => {
                     delay={index * 0.1}
                     className="group h-full"
                   >
-                    <div className="bg-gray-50 rounded-lg p-6 text-center hover:bg-gray-100 transition-colors group-hover:shadow-md h-full flex flex-col">
+                    <button
+                      onClick={() => setSelectedIndustry(industry)}
+                      className="w-full bg-gray-50 rounded-lg p-6 text-center hover:bg-gray-100 transition-all group-hover:shadow-md h-full flex flex-col cursor-pointer border-2 border-transparent hover:border-red-600"
+                    >
                       <div className="flex items-center justify-center mb-4 h-20 flex-shrink-0">
                         <img
                           src={industry.logo}
@@ -169,7 +194,7 @@ const IndustriesTestimonials: React.FC = () => {
                           {industry.description}
                         </p>
                       </div>
-                    </div>
+                    </button>
                   </ScrollAnimated>
                 ))}
               </div>
@@ -304,6 +329,30 @@ const IndustriesTestimonials: React.FC = () => {
         </section>
       </main>
       <Footer />
+
+      {/* Industry Detail Modal */}
+      <Dialog open={!!selectedIndustry} onOpenChange={() => setSelectedIndustry(null)}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-gray-900">
+              Industries
+            </DialogTitle>
+          </DialogHeader>
+          {selectedIndustry && (
+            <div className="space-y-4">
+              {/* Industry Name */}
+              <h3 className="text-xl font-bold text-gray-900">
+                {selectedIndustry.name}
+              </h3>
+
+              {/* Detailed Description */}
+              <DialogDescription className="text-gray-700 leading-relaxed text-base">
+                {selectedIndustry.detailedDescription}
+              </DialogDescription>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
