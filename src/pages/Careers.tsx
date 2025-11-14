@@ -26,6 +26,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { submitInternshipForm, fileToBase64 } from "@/services/internship";
+import { submitEmploymentVerificationForm, fileToBase64 as employmentFileToBase64 } from "@/services/employment-verification";
 import {
   Dialog,
   DialogContent,
@@ -165,9 +166,67 @@ const Careers = () => {
       job.company.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleEmploymentSubmit = (e: React.FormEvent) => {
+  const handleEmploymentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Employment verification submitted:", employmentForm);
+
+    if (!employmentForm.agreeToPolicy) {
+      setDialogType("error");
+      setDialogMessage("Please agree to the Privacy Policy to continue.");
+      setDialogOpen(true);
+      return;
+    }
+
+    if (!employmentForm.authorizationFile) {
+      setDialogType("error");
+      setDialogMessage("Please attach the signed and dated authorization from the employee.");
+      setDialogOpen(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Convert file to base64
+      const fileBase64 = await employmentFileToBase64(employmentForm.authorizationFile);
+
+      const result = await submitEmploymentVerificationForm({
+        firstName: employmentForm.firstName,
+        lastName: employmentForm.lastName,
+        position: employmentForm.position,
+        specificRequest: employmentForm.specificRequest,
+        email: employmentForm.email,
+        attachedFile: fileBase64,
+        fileName: employmentForm.authorizationFile.name,
+        fileType: employmentForm.authorizationFile.type,
+      });
+
+      // Show success dialog
+      setDialogType("success");
+      setDialogMessage("Thank you! Your employment verification request has been submitted successfully. Our HR team will process it and contact you soon.");
+      setDialogOpen(true);
+
+      // Reset form
+      setEmploymentForm({
+        firstName: "",
+        lastName: "",
+        position: "",
+        specificRequest: "",
+        email: "",
+        authorizationFile: null,
+        agreeToPolicy: false,
+      });
+
+      console.log("Employment verification submitted successfully:", result);
+    } catch (error) {
+      console.error("Employment verification submission error:", error);
+
+      // Show error dialog
+      setDialogType("error");
+      setDialogMessage("Failed to submit your employment verification request. Please try again or contact us directly at hr@jairosoft.com");
+      setDialogOpen(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInternshipSubmit = async (e: React.FormEvent) => {
@@ -552,9 +611,9 @@ const Careers = () => {
                   <Button
                     type="submit"
                     className="w-full bg-red-600 hover:bg-red-700 text-white py-3"
-                    disabled={!employmentForm.agreeToPolicy}
+                    disabled={!employmentForm.agreeToPolicy || isSubmitting}
                   >
-                    Submit Verification Request
+                    {isSubmitting ? "Submitting..." : "Submit Verification Request"}
                   </Button>
                 </form>
               </div>
