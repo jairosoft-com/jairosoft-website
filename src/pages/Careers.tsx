@@ -161,7 +161,8 @@ const Careers = () => {
   const filteredJobs = jobOpenings.filter(
     (job) =>
       job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.location.toLowerCase().includes(searchTerm.toLowerCase())
+      job.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      job.company.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleEmploymentSubmit = (e: React.FormEvent) => {
@@ -303,79 +304,95 @@ const Careers = () => {
             </ScrollAnimated>
 
             <div className="space-y-6">
-              {filteredJobs.map((job, index) => (
-                <ScrollAnimated key={index} delay={index * 100}>
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="flex flex-wrap items-start justify-between gap-4">
-                        <div className="flex-1 min-w-0">
-                          <CardTitle className="text-xl text-gray-900 mb-2">
-                            {job.title}
-                          </CardTitle>
-                          <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                            <div className="flex items-center gap-1">
-                              <MapPin className="h-4 w-4" />
-                              {job.location}
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Clock className="h-4 w-4" />
-                              {job.type}
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Building className="h-4 w-4" />
-                              {job.company}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <Badge variant="outline" className="mb-2">
-                            Posted {job.posted}
-                          </Badge>
-                          <div>
-                            <a
-                              href={job.applyUrl ?? "mailto:hr@jairosoft.com"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Button className="bg-red-600 hover:bg-red-700">
-                                Apply Now
-                              </Button>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </CardHeader>
+              {filteredJobs.length === 0 ? (
+                <ScrollAnimated>
+                  <Card className="text-center py-12">
                     <CardContent>
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">
-                            Job Description
-                          </h4>
-                          <p className="text-gray-600">{job.description}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">
-                            Requirements
-                          </h4>
-                          <p className="text-gray-600">{job.requirements}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">
-                            Special Skills
-                          </h4>
-                          <p className="text-gray-600">{job.skills}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">
-                            Application Process
-                          </h4>
-                          <p className="text-gray-600">{job.contact}</p>
-                        </div>
-                      </div>
+                      <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        No results found
+                      </h3>
+                      <p className="text-gray-600">
+                        Try adjusting your search terms or browse all available positions
+                      </p>
                     </CardContent>
                   </Card>
                 </ScrollAnimated>
-              ))}
+              ) : (
+                filteredJobs.map((job, index) => (
+                  <ScrollAnimated key={index} delay={index * 100}>
+                    <Card className="hover:shadow-lg transition-shadow">
+                      <CardHeader>
+                        <div className="flex flex-wrap items-start justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <CardTitle className="text-xl text-gray-900 mb-2">
+                              {job.title}
+                            </CardTitle>
+                            <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                              <div className="flex items-center gap-1">
+                                <MapPin className="h-4 w-4" />
+                                {job.location}
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Clock className="h-4 w-4" />
+                                {job.type}
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Building className="h-4 w-4" />
+                                {job.company}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <Badge variant="outline" className="mb-2">
+                              Posted {job.posted}
+                            </Badge>
+                            <div>
+                              <a
+                                href={job.applyUrl ?? "mailto:hr@jairosoft.com"}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Button className="bg-red-600 hover:bg-red-700">
+                                  Apply Now
+                                </Button>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">
+                              Job Description
+                            </h4>
+                            <p className="text-gray-600">{job.description}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">
+                              Requirements
+                            </h4>
+                            <p className="text-gray-600">{job.requirements}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">
+                              Special Skills
+                            </h4>
+                            <p className="text-gray-600">{job.skills}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">
+                              Application Process
+                            </h4>
+                            <p className="text-gray-600">{job.contact}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollAnimated>
+                ))
+              )}
             </div>
           </TabsContent>
 
