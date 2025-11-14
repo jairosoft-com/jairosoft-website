@@ -13,6 +13,18 @@ const Footer: React.FC = () => {
       logo: "/images/logos/sitecore.svg",
     },
     {
+      name: "Bubble.io",
+      logo: "/images/logos/bubble.png",
+    },
+    {
+      name: "JIT",
+      logo: "/images/logos/jit.png",
+    },
+    {
+      name: "Any Inc",
+      logo: "/images/partners/any-inc.png",
+    },
+    {
       name: "AWS",
       logo: "/images/logos/aws.svg",
     },
