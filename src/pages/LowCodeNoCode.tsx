@@ -16,8 +16,6 @@ import {
   Brain,
   Target,
   CheckCircle,
-  ArrowRight,
-  BookOpen,
   Star
 } from "lucide-react";
 
@@ -78,17 +76,6 @@ const LowCodeNoCode = () => {
       title: "Bubble Developer",
       company: "Jairosoft, Inc.",
       certified: false
-    }
-  ];
-
-  const courseHighlights = [
-    {
-      icon: <BookOpen className="h-6 w-6" />,
-      title: "Bubble 101: Web Development",
-      description: "Comprehensive overview of Bubble.io fundamentals",
-      level: "Beginner",
-      price: "₱999.00",
-      originalPrice: "₱1,500.00"
     }
   ];
 
@@ -216,53 +203,6 @@ const LowCodeNoCode = () => {
           </div>
         </div>
 
-        {/* Course Offerings */}
-        <div className="mb-16">
-          <ScrollAnimated>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              Featured Training Course
-            </h3>
-          </ScrollAnimated>
-
-          <div className="max-w-2xl mx-auto">
-            {courseHighlights.map((course, index) => (
-              <ScrollAnimated key={index}>
-                <Card className="hover:shadow-xl transition-shadow border-2 border-blue-200">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-                          {course.icon}
-                        </div>
-                        <div>
-                          <CardTitle className="text-xl">{course.title}</CardTitle>
-                          <p className="text-gray-600 mt-2">{course.description}</p>
-                          <Badge className="mt-2 bg-green-100 text-green-800">
-                            {course.level}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-blue-600">{course.price}</span>
-                        <span className="text-lg text-gray-500 line-through">{course.originalPrice}</span>
-                      </div>
-                      <a href="/contact-us">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-                          Enroll Now
-                        </button>
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScrollAnimated>
-            ))}
-          </div>
-        </div>
-
         {/* Our Bubble Developers */}
         <div className="mb-16">
           <ScrollAnimated>
@@ -374,8 +314,7 @@ const LowCodeNoCode = () => {
             </p>
             <a href="/contact-us">
               <button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors">
-                Become a Bubbler Today
-                <ArrowRight className="h-4 w-4 ml-2 inline" />
+                Contact Us
               </button>
             </a>
           </div>

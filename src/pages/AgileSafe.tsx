@@ -6,6 +6,12 @@ import PageHeader from "@/components/ui/PageHeader";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   Zap,
   Users,
   Award,
@@ -96,6 +102,57 @@ const AgileSafe = () => {
     { number: "50%", label: "Increase in productivity" },
     { number: "50%", label: "Increase in employee engagement" },
     { number: "16", label: "SEUs & PDUs earned with certification" }
+  ];
+
+  const faqs = [
+    {
+      question: "What is the Scaled Agile Framework (SAFe)?",
+      answer: "The Scaled Agile Framework (SAFe) is a set of organization and workflow patterns designed to implement agile practices at an enterprise scale. It helps businesses address challenges of delivering complex products and services in a fast-moving market."
+    },
+    {
+      question: "What programs does Jairosoft offer under Scaled Agile?",
+      answer: "Jairosoft offers various Scaled Agile programs, including: SAFe Agilist Certification, SAFe Scrum Master Certification, SAFe Product Owner/Product Manager (POPM) Certification, SAFe Advanced Scrum Master, Leading SAFe training, and SAFe for Teams Certification."
+    },
+    {
+      question: "Who can enroll in the Scaled Agile Programs at Jairosoft?",
+      answer: "Professionals across industries can enroll, including project managers, Scrum Masters, product owners, software developers, business analysts, and executives. The programs are designed to benefit anyone involved in Agile transformation, irrespective of their experience level."
+    },
+    {
+      question: "Do I need any prerequisites before enrolling?",
+      answer: "While no formal prerequisites are required for most courses, having basic knowledge of Agile methodologies or experience working in an Agile environment can be beneficial. For advanced courses, prior SAFe certification is recommended."
+    },
+    {
+      question: "How long are the courses, and what is the learning format?",
+      answer: "Most courses span two to three days of instructor-led training. They are available in various formats: In-person training at Jairosoft locations, Virtual training with live instructors, and Hybrid training options."
+    },
+    {
+      question: "What certification will I receive upon completion?",
+      answer: "After completing a program and passing the certification exam, you will receive a certification from Scaled Agile, Inc. specific to the course you completed (e.g., SAFe Agilist, SAFe Scrum Master, SAFe for Teams)."
+    },
+    {
+      question: "How is the certification exam structured?",
+      answer: "The certification exam is typically multiple-choice, conducted online. It must be completed within a specified time frame (usually 90–120 minutes). The exam focuses on practical applications of SAFe concepts covered in the course."
+    },
+    {
+      question: "What is the cost of each program?",
+      answer: "The cost varies depending on the specific course and training format. Prices generally range between $600-$3,000, including course materials and exam fees."
+    },
+    {
+      question: "Are there any discounts available?",
+      answer: "Jairosoft offers early bird discounts, group registration discounts, and sometimes corporate packages for bulk enrollments. For more information on current offers, please contact our sales team."
+    },
+    {
+      question: "How can I register for a program?",
+      answer: "You can register through our website or contact our support team. We'll guide you through the registration and payment process."
+    },
+    {
+      question: "Will I receive post-training support?",
+      answer: "Yes, Jairosoft provides resources such as study guides, practice exams, and access to community. We also offer mentorship opportunities and assessment tools to help you prepare for the certification exam and apply SAFe in your work."
+    },
+    {
+      question: "What are the benefits of SAFe certification?",
+      answer: "SAFe certification enhances your skills in scaling Agile across large organizations, increasing your career prospects. It's recognized globally and validates your knowledge in Agile principles, Lean practices, and effective leadership in complex environments."
+    }
   ];
 
   return (
@@ -259,6 +316,36 @@ const AgileSafe = () => {
             </p>
           </div>
         </ScrollAnimated>
+
+        {/* FAQs */}
+        <div className="mb-16">
+          <ScrollAnimated>
+            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              SAFe® Agilist Certification and Training FAQ's
+            </h3>
+          </ScrollAnimated>
+
+          <ScrollAnimated delay={200}>
+            <div className="max-w-4xl mx-auto">
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className="bg-white border border-gray-200 rounded-lg px-6"
+                  >
+                    <AccordionTrigger className="text-left text-lg font-medium text-gray-900 hover:text-blue-600">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-700 leading-relaxed">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </ScrollAnimated>
+        </div>
 
         {/* Call to Action */}
         <ScrollAnimated delay={400}>

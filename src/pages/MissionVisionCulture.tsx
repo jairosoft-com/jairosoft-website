@@ -283,20 +283,12 @@ const MissionVisionCulture: React.FC = () => {
               <p className="text-xl text-red-100 mb-8">
                 Join our team or partner with us to experience the power of kindness, innovation, and continuous growth.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="/contact-us"
-                  className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-                >
-                  Partner With Us
-                </a>
-                <a
-                  href="#careers"
-                  className="inline-block bg-red-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-800 transition-colors border-2 border-white/20"
-                >
-                  Join Our Team
-                </a>
-              </div>
+              <a
+                href="/contact-us"
+                className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              >
+                Partner With Us
+              </a>
             </ScrollAnimated>
           </div>
         </section>
