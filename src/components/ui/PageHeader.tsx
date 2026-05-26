@@ -1,5 +1,11 @@
 import React from "react";
+import { Badge } from "@/components/ui/badge";
 import { ScrollAnimated } from "./ScrollAnimated";
+
+interface BadgeItem {
+  text: string;
+  variant?: "default" | "secondary" | "outline" | "destructive";
+}
 
 interface PageHeaderProps {
   title: string;
@@ -7,6 +13,8 @@ interface PageHeaderProps {
   backgroundType?: "gradient" | "pattern" | "solid";
   accentColor?: "red" | "blue" | "gray";
   breadcrumb?: string;
+  icon?: React.ReactNode;
+  badges?: BadgeItem[];
   children?: React.ReactNode;
 }
 
