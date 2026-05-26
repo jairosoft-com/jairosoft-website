@@ -24,6 +24,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   backgroundType = "gradient",
   accentColor = "red",
   breadcrumb,
+  icon,
+  badges,
   children
 }) => {
   // Auto-determine breadcrumb based on current path if not provided
