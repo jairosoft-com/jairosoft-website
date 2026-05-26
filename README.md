@@ -1,73 +1,124 @@
-# Welcome to your Lovable project
+# Jairosoft — Corporate Website
 
-## Project info
+The official website for **Jairosoft Inc.**, an AI-first software solutions company founded in 2017.
 
-**URL**: https://lovable.dev/projects/9f4e3dec-fd97-4e77-82fe-6f8b846bf9a6
+## About the Project
 
-## How can I edit this code?
+This is a React TypeScript single-page application (SPA) built for Jairosoft's corporate web presence. It showcases the company's services, industry expertise, client testimonials, leadership team, and company culture built on the foundation of "Aloha" values.
 
-There are several ways of editing your application.
+**Live URL**: https://jairosoft.lovable.app
 
-**Use Lovable**
+**Custom Domain**: https://jairosoft.pixeloha.com
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9f4e3dec-fd97-4e77-82fe-6f8b846bf9a6) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technology Stack
 
-**Use your preferred IDE**
+| Category | Technology |
+|----------|------------|
+| Build Tool | Vite with SWC React plugin |
+| UI Framework | React 18 with React Router DOM |
+| Component Library | shadcn/ui with Radix UI primitives |
+| Styling | Tailwind CSS with CSS variables for theming |
+| State Management | TanStack Query |
+| Form Handling | React Hook Form with Zod validation |
+| Icons | Lucide React |
+| Notifications | Sonner toasts |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Development Commands
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+# Install dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server (runs on port 8080)
 npm run dev
+
+# Build for production
+npm run build
+
+# Build for development
+npm run build:dev
+
+# Lint code
+npm run lint
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/
+│   ├── layout/          # Header, Footer, StickyHeader, and layout components
+│   ├── sections/        # Main page sections (Hero, Services, Industries, etc.)
+│   └── ui/              # shadcn/ui reusable components
+├── hooks/               # Custom React hooks (scroll animations, mobile detection)
+├── lib/                 # Utility functions (cn helper)
+├── pages/               # Route components (Index, Careers, ContactUs, etc.)
+└── main.tsx            # Application entry point
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## Key Features
 
-This project is built with:
+- **Responsive Design** — Mobile-first approach with Tailwind breakpoints
+- **Scroll Animations** — Custom `ScrollAnimated` component and scroll-activated sticky header
+- **Video Background** — Hero section with local video file
+- **Multi-page Routing** — React Router DOM for internal pages (Careers, Contact, Leadership, etc.)
+- **SEO Ready** — Structured data, canonical links, and semantic HTML
+- **Design System** — CSS custom properties and shadcn/ui components with Tailwind
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## Jairosoft at a Glance
 
-Simply open [Lovable](https://lovable.dev/projects/9f4e3dec-fd97-4e77-82fe-6f8b846bf9a6) and click on Share -> Publish.
+- **Founded**: 2017
+- **Headquarters**: Victorville, California & Honolulu, Hawaii
+- **Offices**: California, Hawaii, Cebu (Philippines), Davao City (Philippines)
+- **Focus**: AI-powered software solutions for government, healthcare, education, and consumer products
+- **Frameworks**: SAFe (Scaled Agile Framework)
+- **Culture**: Built on Aloha — Kindness, Respect, Care, Innovation, Compassion
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The site is deployed on the Lovable platform. To publish updates, open the [Lovable Project](https://lovable.dev/projects/9f4e3dec-fd97-4e77-82fe-6f8b846bf9a6) and click **Share → Publish**.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Custom Domain
+
+A custom domain is connected at: https://jairosoft.pixeloha.com
+
+To update domain settings, navigate to **Project > Settings > Domains** in Lovable.
+
+---
+
+## Contributing
+
+You can edit this project in three ways:
+
+1. **Via Lovable** — Visit the project link above and start prompting.
+2. **Via your IDE** — Clone this repo, make changes, and push. Changes sync automatically.
+3. **Via GitHub** — Edit files directly in the browser and commit.
+
+---
+
+## Contact
+
+- **Email**: info@jairosoft.com
+- **Phone**: +1 (800)-881-8949
+- **Facebook**: https://www.facebook.com/jairosoft.inc
+- **LinkedIn**: https://www.linkedin.com/company/jairosoft-inc/
+- **Instagram**: https://www.instagram.com/jairosoft_inc/
+
+---
+
+*Copyright © Jairosoft Inc. All rights reserved.*
