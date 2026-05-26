@@ -120,6 +120,30 @@ const PageHeader: React.FC<PageHeaderProps> = ({
                 {getBreadcrumb()}
               </span>
             </div>
+
+            {/* Icon */}
+            {icon && (
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white">
+                  {icon}
+                </div>
+              </div>
+            )}
+
+            {/* Badges */}
+            {badges && badges.length > 0 && (
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
+                {badges.map((badge, index) => (
+                  <Badge
+                    key={index}
+                    variant={badge.variant || "default"}
+                    className="bg-white/20 text-white border-white/30 hover:bg-white/30"
+                  >
+                    {badge.text}
+                  </Badge>
+                ))}
+              </div>
+            )}
             
             {/* Main Title */}
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
