@@ -22,7 +22,7 @@ export async function submitContactForm(formData: ContactFormData): Promise<{
   message: string;
 }> {
   try {
-    const response = await fetch('/.netlify/functions/submit-contact', {
+    const response = await fetch('/api/submit-contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

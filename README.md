@@ -4,9 +4,7 @@ The official website for **Jairosoft Inc.**, an AI-first software solutions comp
 
 ## About the Project
 
-This is a React TypeScript single-page application (SPA) built for Jairosoft's corporate web presence. It showcases the company's services, industry expertise, client testimonials, leadership team, and company culture built on the foundation of "Aloha" values.
-
-**Live URL**: https://jairosoft.lovable.app
+This is a React TypeScript application built for Jairosoft's corporate web presence, running on **Next.js 16 (App Router)**. It showcases the company's services, industry expertise, client testimonials, leadership team, and company culture built on the foundation of "Aloha" values.
 
 **Custom Domain**: https://jairosoft.pixeloha.com
 
@@ -16,12 +14,13 @@ This is a React TypeScript single-page application (SPA) built for Jairosoft's c
 
 | Category | Technology |
 |----------|------------|
-| Build Tool | Vite with SWC React plugin |
-| UI Framework | React 18 with React Router DOM |
+| Framework | Next.js 16 (App Router, Turbopack) |
+| UI Framework | React 18 |
 | Component Library | shadcn/ui with Radix UI primitives |
 | Styling | Tailwind CSS with CSS variables for theming |
-| State Management | TanStack Query |
-| Form Handling | React Hook Form with Zod validation |
+| Fonts | `next/font/google` (IBM Plex Sans, Montserrat) |
+| Backend | Next Route Handlers (`src/app/api/*`) → GoHighLevel CRM |
+| Form Handling | Plain React state (React Hook Form + Zod available) |
 | Icons | Lucide React |
 | Notifications | Sonner toasts |
 
@@ -33,21 +32,20 @@ This is a React TypeScript single-page application (SPA) built for Jairosoft's c
 # Install dependencies
 npm i
 
-# Start development server (runs on port 8080)
+# Start the dev server (port 8080)
 npm run dev
 
 # Build for production
 npm run build
 
-# Build for development
-npm run build:dev
+# Start the production server (port 8080)
+npm run start
 
 # Lint code
 npm run lint
-
-# Preview production build
-npm run preview
 ```
+
+Backend forms need GoHighLevel credentials — copy `.env.example` to `.env.local` and fill in the values (also set them in the Vercel project).
 
 ---
 
@@ -55,14 +53,17 @@ npm run preview
 
 ```
 src/
+├── app/                 # App Router: layout.tsx, per-route page.tsx (metadata), not-found.tsx
+│   └── api/             # Route Handlers (contact, internship, employment-verification)
 ├── components/
 │   ├── layout/          # Header, Footer, StickyHeader, and layout components
 │   ├── sections/        # Main page sections (Hero, Services, Industries, etc.)
 │   └── ui/              # shadcn/ui reusable components
 ├── hooks/               # Custom React hooks (scroll animations, mobile detection)
 ├── lib/                 # Utility functions (cn helper)
-├── pages/               # Route components (Index, Careers, ContactUs, etc.)
-└── main.tsx            # Application entry point
+├── services/            # Client fetch wrappers that POST to /api/* route handlers
+├── views/               # Page components rendered by the app/ route wrappers
+└── index.css            # Global stylesheet (imported in app/layout.tsx)
 ```
 
 ---
@@ -91,23 +92,20 @@ src/
 
 ## Deployment
 
-The site is deployed on the Lovable platform. To publish updates, open the [Lovable Project](https://lovable.dev/projects/9f4e3dec-fd97-4e77-82fe-6f8b846bf9a6) and click **Share → Publish**.
+The site targets **Vercel**, which auto-detects Next.js. Set the GoHighLevel environment
+variables (see `.env.example`) in the Vercel project settings so the contact / internship /
+employment-verification forms work.
 
 ## Custom Domain
 
-A custom domain is connected at: https://jairosoft.pixeloha.com
-
-To update domain settings, navigate to **Project > Settings > Domains** in Lovable.
+A custom domain is connected at: https://jairosoft.pixeloha.com — configure it under
+**Project > Settings > Domains** in Vercel.
 
 ---
 
 ## Contributing
 
-You can edit this project in three ways:
-
-1. **Via Lovable** — Visit the project link above and start prompting.
-2. **Via your IDE** — Clone this repo, make changes, and push. Changes sync automatically.
-3. **Via GitHub** — Edit files directly in the browser and commit.
+Clone this repo, make changes on a branch, run `npm run dev` locally, and open a pull request.
 
 ---
 

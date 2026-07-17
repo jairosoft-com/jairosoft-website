@@ -1,3 +1,5 @@
+"use client";
+
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import React from "react";
 import { ScrollAnimated } from "../ui/ScrollAnimated";

@@ -94,7 +94,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			fontFamily: {
-				montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				montserrat: ['var(--font-montserrat)', 'Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			}
 		}
 	},

@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { usePathname } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { ScrollAnimated } from "./ScrollAnimated";
 
@@ -28,11 +31,13 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   badges,
   children
 }) => {
+  const pathname = usePathname();
+
   // Auto-determine breadcrumb based on current path if not provided
   const getBreadcrumb = () => {
     if (breadcrumb) return breadcrumb;
 
-    const path = window.location.pathname;
+    const path = pathname ?? "";
     if (path.startsWith('/who-we-serve/')) return 'Who We Serve';
     if (path.startsWith('/who-we-are/')) return 'Who We Are';
     if (path === '/what-we-do' || path === '/agile-safe' || path === '/low-code-no-code') return 'What We Do';

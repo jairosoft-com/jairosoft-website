@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const logos = ["Placeholder Client 1", "Placeholder Client 2", "Placeholder Client 3"];

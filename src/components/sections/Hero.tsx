@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -22,17 +24,17 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ videoURL, title, subtitle, cta }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   const isActive = (path: string) => {
     if (path === "/") {
-      return location.pathname === "/";
+      return pathname === "/";
     }
-    return location.pathname.startsWith(path);
+    return pathname.startsWith(path);
   };
 
   const isDropdownActive = (paths: string[]) => {
-    return paths.some((path) => location.pathname.startsWith(path));
+    return paths.some((path) => pathname.startsWith(path));
   };
 
   const toggleMobileMenu = () => {

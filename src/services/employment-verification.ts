@@ -35,7 +35,7 @@ export async function submitEmploymentVerificationForm(formData: EmploymentVerif
   message: string;
 }> {
   try {
-    const response = await fetch('/.netlify/functions/submit-employment-verification', {
+    const response = await fetch('/api/submit-employment-verification', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

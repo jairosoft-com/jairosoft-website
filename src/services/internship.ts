@@ -38,7 +38,7 @@ export async function submitInternshipForm(formData: InternshipFormData): Promis
   message: string;
 }> {
   try {
-    const response = await fetch('/.netlify/functions/submit-internship', {
+    const response = await fetch('/api/submit-internship', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

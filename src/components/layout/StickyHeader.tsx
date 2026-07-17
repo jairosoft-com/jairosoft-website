@@ -1,6 +1,8 @@
+"use client";
+
 import React from "react";
 import { cn } from "@/lib/utils";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import {
   NavigationMenu,
@@ -18,17 +20,17 @@ interface StickyHeaderProps {
 const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) => {
   const [visible, setVisible] = React.useState(alwaysVisible);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   const isActive = (path: string) => {
     if (path === "/") {
-      return location.pathname === "/";
+      return pathname === "/";
     }
-    return location.pathname.startsWith(path);
+    return pathname.startsWith(path);
   };
 
   const isDropdownActive = (paths: string[]) => {
-    return paths.some(path => location.pathname.startsWith(path));
+    return paths.some(path => pathname.startsWith(path));
   };
 
   const toggleMobileMenu = () => {
