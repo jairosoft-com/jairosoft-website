@@ -185,6 +185,15 @@ const Careers = () => {
       return;
     }
 
+    // Files are sent as base64 JSON; keep under Vercel's ~4.5MB request-body limit.
+    const MAX_FILE_BYTES = 3 * 1024 * 1024; // ~3MB raw -> ~4MB base64
+    if (employmentForm.authorizationFile.size > MAX_FILE_BYTES) {
+      setDialogType("error");
+      setDialogMessage("The attached file is too large. Please upload a file smaller than 3 MB.");
+      setDialogOpen(true);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -244,6 +253,15 @@ const Careers = () => {
     if (!internshipForm.attachedFile) {
       setDialogType("error");
       setDialogMessage("Please attach the required documents (Resume, Cover Letter, Intent Letter, Portfolio) in a ZIP or RAR file.");
+      setDialogOpen(true);
+      return;
+    }
+
+    // Files are sent as base64 JSON; keep under Vercel's ~4.5MB request-body limit.
+    const MAX_FILE_BYTES = 3 * 1024 * 1024; // ~3MB raw -> ~4MB base64
+    if (internshipForm.attachedFile.size > MAX_FILE_BYTES) {
+      setDialogType("error");
+      setDialogMessage("The attached file is too large. Please upload a file smaller than 3 MB.");
       setDialogOpen(true);
       return;
     }

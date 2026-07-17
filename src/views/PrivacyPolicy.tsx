@@ -23,45 +23,21 @@ const PrivacyPolicy = () => {
         <ScrollAnimated animation="fadeInUp">
           <Card className="max-w-3xl mx-auto">
             <CardContent className="p-8 space-y-6 text-muted-foreground leading-relaxed">
+              {/*
+                PLACEHOLDER — this route was added because the cookie banner
+                links to /privacy-policy (previously a 404). It intentionally
+                makes NO claims about Jairosoft's data practices. Replace the
+                copy below with the official, company-approved privacy policy
+                before relying on this page.
+              */}
               <p>
-                Jairosoft Inc. respects your privacy. This page explains, in
-                general terms, how we handle information collected through this
-                website.
+                Jairosoft Inc.&rsquo;s privacy policy is being finalized. This
+                page is a placeholder and does not yet describe how we collect,
+                use, or share information.
               </p>
               <div className="space-y-2">
                 <h2 className="text-xl font-semibold text-foreground">
-                  Information We Collect
-                </h2>
-                <p>
-                  When you submit a form (for example, our contact, careers, or
-                  employment-verification forms), we collect the details you
-                  provide — such as your name, email, phone number, and any files
-                  you choose to attach — so we can respond to your request.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-xl font-semibold text-foreground">
-                  How We Use Your Information
-                </h2>
-                <p>
-                  We use the information you submit solely to respond to your
-                  inquiry and manage our relationship with you. We do not sell
-                  your personal information.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-xl font-semibold text-foreground">
-                  Cookies
-                </h2>
-                <p>
-                  We use cookies to enhance your experience and understand how
-                  the site is used. You can manage your preferences at any time
-                  through the cookie banner.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-xl font-semibold text-foreground">
-                  Contact Us
+                  Questions?
                 </h2>
                 <p className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-primary" />
