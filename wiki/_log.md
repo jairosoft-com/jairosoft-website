@@ -4,6 +4,17 @@ title: Wiki Log
 
 # Wiki Log
 
+## 2026-07-22 — Session Insights: Jairosoft Next.js Migration
+
+- **Operation**: insights
+- **Label**: Jairosoft Next.js Migration
+- **Pages created**: Vercel Agent-Skills Installed (idea), Langfuse Observability Setup (idea)
+- **Pages updated**: Jairosoft Website (project) — added Tooling facts and cross-links
+- **Ideas extracted**: 2
+- **Conflicts flagged**: 0
+- **Cross-references added**: 2 (Jairosoft Website → both new idea pages)
+- **Outcome**: Success
+
 ## 2026-07-21 — Session Insights: Azure DevOps Association
 
 - **Operation**: insights

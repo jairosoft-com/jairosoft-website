@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
-updated: 2026-07-21
-page_count: 2
+updated: 2026-07-22
+page_count: 4
 ---
 
 # Wiki Index
@@ -9,6 +9,8 @@ page_count: 2
 ## Ideas
 
 - [[Jairosoft Website Forms Broken (No GoHighLevel Replacement)]] — 3 site forms fail in production since GoHighLevel was dropped; replacement undecided (#jairosoft-website, #forms, #gohighlevel) [raw]
+- [[Vercel Agent-Skills Installed]] — 9 Vercel agent-skills added to `.agents/skills/`; 3 flagged Medium risk by Snyk; commit-vs-gitignore undecided (#jairosoft-website, #tooling, #vercel, #security) [raw]
+- [[Langfuse Observability Setup]] — Langfuse CLI/skill added to Claude Code env; unclear if meant to integrate with this codebase (#jairosoft-website, #tooling, #langfuse) [raw]
 
 ## Concepts
 
