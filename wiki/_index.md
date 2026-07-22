@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 updated: 2026-07-21
-page_count: 1
+page_count: 2
 ---
 
 # Wiki Index
@@ -32,7 +32,7 @@ _No platforms yet._
 
 ## Projects
 
-_No projects yet._
+- [[Jairosoft Website]] — Next.js 16 corporate site, deployed on Vercel; work tracked in Azure DevOps (#jairosoft-website, #nextjs, #vercel, #azure-devops)
 
 ## Decisions
 

@@ -4,6 +4,17 @@ title: Wiki Log
 
 # Wiki Log
 
+## 2026-07-21 — Session Insights: Azure DevOps Association
+
+- **Operation**: insights
+- **Label**: Azure DevOps Association
+- **Pages created**: Jairosoft Website (project)
+- **Pages updated**: none
+- **Ideas extracted**: 0
+- **Conflicts flagged**: 0
+- **Cross-references added**: 1 (resolved dangling [[Jairosoft Website]] link from the forms-broken idea page)
+- **Outcome**: Success
+
 ## 2026-07-21 — Session Insights: Jairosoft Next.js Migration
 
 - **Operation**: insights
