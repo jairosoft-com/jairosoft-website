@@ -2,20 +2,50 @@
 
 import React from "react";
 import { ScrollAnimated } from "../ui/ScrollAnimated";
+import { cn } from "@/lib/utils";
 
 // Redesign (Claude Design mockup — PartnerLogos.dc.html). This section is now
 // the sole home for the "Technology Partners" logo band: per the mockup it's
 // a standalone Home-only section (previously embedded in Footer.tsx on every
 // page — a user-confirmed change, see Footer.tsx's comment).
 const partnerships = [
-  { name: "SAFe Partnership", logo: "/images/logos/safe-partnership.svg" },
-  { name: "Sitecore", logo: "/images/logos/sitecore.svg" },
-  { name: "Bubble.io", logo: "/images/logos/bubble.png" },
-  { name: "JIT", logo: "/images/logos/jit.png" },
+  {
+    name: "SAFe Partnership",
+    logo: "/images/logos/safe-partnership.svg",
+    imgClassName: "h-16 max-h-16",
+  },
+  {
+    name: "Sitecore",
+    logo: "/images/logos/sitecore.svg",
+    imgClassName: "h-16 max-h-16",
+  },
+  {
+    name: "Bubble.io",
+    logo: "/images/logos/bubble.svg",
+    imgClassName: "h-10 max-h-10",
+  },
+  {
+    name: "JIT",
+    logo: "/images/logos/jit.png",
+    imgClassName: "h-20 max-h-20",
+  },
   { name: "Any Inc", logo: "/images/partners/any-inc.png" },
-  { name: "AWS", logo: "/images/logos/aws.svg" },
-  { name: "Microsoft", logo: "/images/logos/microsoft.svg" },
-  { name: "Google Partner", logo: "/images/logos/google-partner.svg" },
+  {
+    name: "AWS",
+    logo: "/images/logos/aws.svg",
+    imgClassName: "h-10 max-h-10",
+  },
+
+  {
+    name: "Microsoft",
+    logo: "/images/logos/microsoft.svg",
+    imgClassName: "h-10 max-h-10",
+  },
+  {
+    name: "Google Partner",
+    logo: "/images/logos/google-partner.svg",
+    imgClassName: "h-10 max-h-10",
+  },
 ];
 
 const Logos: React.FC = () => {
@@ -41,7 +71,10 @@ const Logos: React.FC = () => {
                 <img
                   src={partner.logo}
                   alt={`${partner.name} logo`}
-                  className="max-h-12 max-w-full object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                  className={cn(
+                    "max-h-12 max-w-full object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0",
+                    partner.imgClassName,
+                  )}
                 />
               </div>
             </ScrollAnimated>
