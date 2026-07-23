@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { preload } from "react-dom";
 import Index from "@/views/Index";
 
 export const metadata: Metadata = {
@@ -20,6 +21,11 @@ const orgLd = {
 };
 
 export default function Page() {
+  // LCP-critical images for the redesign hero + always-visible sticky nav
+  // (rendering-resource-hints).
+  preload("/lovable-uploads/logo-jairosoft-dark.png", { as: "image" });
+  preload("/lovable-uploads/og-image.png", { as: "image" });
+
   return (
     <>
       <script

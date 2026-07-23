@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans, Montserrat } from "next/font/google";
+import { IBM_Plex_Sans, Montserrat, Manrope } from "next/font/google";
 import "@/index.css";
 import { Providers } from "./providers";
 
@@ -14,6 +14,16 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["700", "800"],
   variable: "--font-montserrat",
+  display: "swap",
+});
+
+// Redesign font (Claude Design mockup — Phase 1 shell + Home). Applied via the
+// `font-manrope` utility on the redesigned components themselves, not globally,
+// so un-migrated pages keep IBM Plex Sans / Montserrat until their own phase.
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -61,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${ibmPlexSans.variable} ${montserrat.variable} ${manrope.variable}`}>
       <body>
         <Providers>{children}</Providers>
       </body>

@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { ScrollAnimated } from "../ui/ScrollAnimated";
 
+// Redesign (Claude Design mockup — Home.dc.html "How we help" section).
 const services = [
   {
     label: "Team Augmentation",
@@ -31,57 +30,44 @@ const Services: React.FC = () => {
     <section
       id="services"
       aria-labelledby="services-title"
-      className="container py-20"
+      className="font-manrope bg-white px-7 pb-[90px] pt-[110px]"
     >
-      <div className="mx-auto max-w-3xl text-center">
-        <h2
-          id="services-title"
-          className="text-3xl font-extrabold tracking-tight text-center md:text-4xl"
-        >
-          Let's Start <span className="text-primary">Simple.</span>
-        </h2>
-      </div>
-      <div className="mx-auto max-w-6xl mt-10 grid gap-6 lg:grid-cols-3">
-        {services.map((s, i) => {
-          const bg =
-            i === 0 ? "bg-brand-blue" : i === 1 ? "bg-accent" : "bg-black";
-          return (
-            <ScrollAnimated
-              key={s.name}
-              animation="fadeInUp"
-              delay={i * 100}
-              threshold={0.1}
-              className="group"
-            >
-              <Card
-                className={cn(
-                  "group border-0 overflow-hidden transition-transform hover:-translate-y-1",
-                  bg
-                )}
-              >
-                <CardHeader className="pt-6">
-                  <span className="text-xs uppercase tracking-wide text-primary-foreground/80">
-                    {s.label}
-                  </span>
-                  <CardTitle className="mt-2 text-xl font-bold leading-snug text-primary-foreground">
-                    {s.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pb-6">
-                  <p className="text-sm text-primary-foreground/90">
-                    {s.description}
-                  </p>
-                  <a
-                    href="/what-we-do"
-                    className="mt-4 inline-block text-sm font-medium text-primary-foreground/90 underline-offset-4 hover:underline"
-                  >
-                    Learn More
-                  </a>
-                </CardContent>
-              </Card>
+      <div className="mx-auto max-w-[1240px]">
+        <div className="mx-auto mb-[60px] max-w-[640px] text-center">
+          <div className="mb-[14px] text-[13px] font-bold uppercase tracking-[0.14em] text-redesign-accent">
+            How we help
+          </div>
+          <h2
+            id="services-title"
+            className="m-0 text-3xl font-extrabold tracking-[-0.02em] text-[#0c1424] md:text-[46px]"
+          >
+            Let&apos;s Start Simple.
+          </h2>
+        </div>
+
+        <div className="grid gap-[26px] md:grid-cols-3">
+          {services.map((s, i) => (
+            <ScrollAnimated key={s.name} animation="fadeInUp" delay={i * 100} threshold={0.1}>
+              <div className="group h-full rounded-[18px] border border-[rgba(12,20,36,0.09)] bg-white p-8 shadow-[0_1px_3px_rgba(12,20,36,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:border-redesign-accent/35 hover:shadow-[0_24px_48px_rgba(12,20,36,0.12)]">
+                <div className="mb-[22px] inline-block rounded-full bg-redesign-accent/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-redesign-accent">
+                  {s.label}
+                </div>
+                <h3 className="mb-3 text-[23px] font-extrabold leading-[1.25] text-[#0c1424]">
+                  {s.name}
+                </h3>
+                <p className="mb-[22px] text-[15.5px] leading-[1.65] text-[#5b6575]">
+                  {s.description}
+                </p>
+                <a
+                  href="/what-we-do"
+                  className="inline-flex items-center gap-[7px] text-[15px] font-bold text-redesign-accent transition-[gap] duration-300 group-hover:gap-[11px]"
+                >
+                  Learn More <span aria-hidden="true">→</span>
+                </a>
+              </div>
             </ScrollAnimated>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );

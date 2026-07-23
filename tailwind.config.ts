@@ -55,6 +55,14 @@ export default {
 				brand: {
 					blue: 'hsl(var(--brand-blue))',
 				},
+				// Redesign tokens (Claude Design mockup — Phase 1 shell + Home).
+				redesign: {
+					accent: 'hsl(var(--redesign-accent))',
+					'accent-hover': 'hsl(var(--redesign-accent-hover))',
+					'surface-1': 'hsl(var(--redesign-surface-1))',
+					'surface-2': 'hsl(var(--redesign-surface-2))',
+					'surface-3': 'hsl(var(--redesign-surface-3))',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -95,6 +103,7 @@ export default {
 			},
 			fontFamily: {
 				montserrat: ['var(--font-montserrat)', 'Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				manrope: ['var(--font-manrope)', 'Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			}
 		}
 	},

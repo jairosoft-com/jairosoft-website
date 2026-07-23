@@ -1,310 +1,197 @@
-"use client";
-
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import React from "react";
-import { ScrollAnimated } from "../ui/ScrollAnimated";
+
+// Redesign (Claude Design mockup — Footer.dc.html). This footer no longer
+// embeds the "Technology Partners" logo band the current site shows on every
+// page — in the mockup that's a standalone section (see PartnerLogos.dc.html
+// / src/components/sections/Logos.tsx) composed only on the Home page. That's
+// a deliberate, user-confirmed change: partner logos become Home-only.
+const socialLinkClass =
+  "flex h-10 w-10 items-center justify-center rounded-[10px] border border-white/10 bg-white/[0.06] text-[#cdd5e3] transition-colors hover:border-redesign-accent hover:bg-redesign-accent hover:text-white";
+
+const footerLinkClass = "text-[14.5px] text-[#8b95a6] transition-colors hover:text-white";
+
+const offices = [
+  {
+    flag: "🇺🇸",
+    name: "California",
+    address: ["12584 Luna Road", "Victorville, CA 92392"],
+  },
+  {
+    flag: "🇺🇸",
+    name: "Hawaii",
+    address: ["1050 Queen St Suite 100", "Honolulu, HI 96814"],
+  },
+  {
+    flag: "🇵🇭",
+    name: "Cebu",
+    address: ["1049 M.J. Cuenco Avenue", "Mabolo Cebu City, 6000"],
+  },
+  {
+    flag: "🇵🇭",
+    name: "Davao City",
+    address: ["Holy Trinity Avenue", "Holy Trinity Village", "Cabantian 8000 Davao City"],
+  },
+];
 
 const Footer: React.FC = () => {
-  const partnerships = [
-    {
-      name: "SAFe Partnership",
-      logo: "/images/logos/safe-partnership.svg",
-    },
-    {
-      name: "Sitecore",
-      logo: "/images/logos/sitecore.svg",
-    },
-    {
-      name: "Bubble.io",
-      logo: "/images/logos/bubble.png",
-    },
-    {
-      name: "JIT",
-      logo: "/images/logos/jit.png",
-    },
-    {
-      name: "Any Inc",
-      logo: "/images/partners/any-inc.png",
-    },
-    {
-      name: "AWS",
-      logo: "/images/logos/aws.svg",
-    },
-    {
-      name: "Microsoft",
-      logo: "/images/logos/microsoft.svg",
-    },
-    {
-      name: "Google Partner",
-      logo: "/images/logos/google-partner.svg",
-    },
-  ];
-
   return (
     <footer
-      className="bg-secondary text-secondary-foreground border-t border-border"
+      className="font-manrope bg-redesign-surface-1 px-7 pb-[34px] pt-[72px] text-[#aeb7c6]"
       aria-labelledby="footer-heading"
     >
-      {/* Technology Partners */}
-      <section className="py-20 px-6 bg-gray-900">
-        <div className="container mx-auto max-w-6xl">
-          <ScrollAnimated animation="fadeInUp">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Technology Partners
-              </h2>
-              <p className="text-lg text-gray-300">
-                Powered by industry-leading partnerships and certifications
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center justify-center gap-12">
-              {partnerships.map((partner, index) => (
-                <ScrollAnimated
-                  key={index}
-                  animation="fadeInUp"
-                  delay={index * 0.1}
-                >
-                  <div className="flex items-center justify-center">
-                    <img
-                      src={partner.logo}
-                      alt={`${partner.name} logo`}
-                      className="h-12 w-auto opacity-80 hover:opacity-100 transition-opacity"
-                    />
-                  </div>
-                </ScrollAnimated>
-              ))}
-            </div>
-          </ScrollAnimated>
-        </div>
-      </section>
-      <div className="container py-16 md:py-24">
+      <div className="mx-auto max-w-[1240px]">
         <h2 id="footer-heading" className="sr-only">
           About Jairosoft and site links
         </h2>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          <div className="space-y-4 lg:col-span-2">
-            <div className="flex items-center gap-3">
+
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+          <div>
+            <a href="/" className="mb-[18px] flex items-center gap-[11px] no-underline">
               <img
-                src="/lovable-uploads/logo-jairosoft.png"
+                src="/lovable-uploads/logo-jairosoft-dark.png"
                 alt="Jairosoft"
-                className="h-9 w-auto"
+                className="h-[34px] w-auto"
                 loading="lazy"
               />
-              <span className="font-brand font-extrabold tracking-wide text-lg">
+              <span className="text-[15px] font-extrabold tracking-[0.16em] text-white">
                 JAIROSOFT
               </span>
-            </div>
-            <p className="text-sm text-muted-foreground max-w-sm">
-              Highly competent Agile Teams with Sitecore certified architects,
-              project managers, full-stack and software test developers focusing
-              on end-to-end implementation since 2017.
+            </a>
+            <p className="max-w-[340px] text-[14.5px] leading-[1.7] text-[#8b95a6]">
+              Highly competent Agile Teams with Sitecore certified architects, project
+              managers, full-stack and software test developers focusing on end-to-end
+              implementation since 2017.
             </p>
-            <div className="flex items-center gap-3 pt-2">
+            <div className="mt-[22px] flex gap-3">
               <a
                 href="https://www.facebook.com/jairosoft.inc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-red-600 transition-colors p-1"
                 aria-label="Facebook"
+                className={socialLinkClass}
               >
-                <Facebook size={20} />
+                <Facebook size={18} />
               </a>
               <a
                 href="https://www.linkedin.com/company/jairosoft-inc/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-red-600 transition-colors p-1"
                 aria-label="LinkedIn"
+                className={socialLinkClass}
               >
-                <Linkedin size={20} />
+                <Linkedin size={18} />
               </a>
               <a
                 href="https://www.instagram.com/jairosoft_inc/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-red-600 transition-colors p-1"
                 aria-label="Instagram"
+                className={socialLinkClass}
               >
-                <Instagram size={20} />
+                <Instagram size={18} />
               </a>
             </div>
           </div>
 
-          <nav aria-label="Services" className="space-y-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
-              Services
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="/what-we-do"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  What We Do
-                </a>
-              </li>
-              <li className="text-muted-foreground">Low Code/No-Code</li>
-              <li className="text-muted-foreground">Agile Methodology</li>
-              <li className="text-muted-foreground">
-                Digital Experience Platform
-              </li>
-              <li className="text-muted-foreground">AI/ML Solutions</li>
-            </ul>
+          <nav aria-label="Services" className="space-y-[11px]">
+            <h3 className="mb-[18px] text-[14px] font-bold text-white">Services</h3>
+            <a href="/what-we-do" className={`block ${footerLinkClass}`}>
+              What We Do
+            </a>
+            <a href="/low-code-no-code" className={`block ${footerLinkClass}`}>
+              Low Code/No-Code
+            </a>
+            <a href="/agile-safe" className={`block ${footerLinkClass}`}>
+              Agile Methodology
+            </a>
+            <a href="/what-we-do" className={`block ${footerLinkClass}`}>
+              Digital Experience Platform
+            </a>
+            <a href="/what-we-do" className={`block ${footerLinkClass}`}>
+              AI/ML Solutions
+            </a>
           </nav>
 
-          <nav aria-label="Company" className="space-y-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
-              Company
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="/who-we-are/our-history"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  Our History
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/who-we-are/mission-vision-culture"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  Mission & Culture
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/who-we-are/executive-leadership"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  Leadership
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/who-we-are/locations"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  Global Locations
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/careers"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  Careers
-                </a>
-              </li>
-            </ul>
+          <nav aria-label="Company" className="space-y-[11px]">
+            <h3 className="mb-[18px] text-[14px] font-bold text-white">Company</h3>
+            <a href="/who-we-are/our-history" className={`block ${footerLinkClass}`}>
+              Our History
+            </a>
+            <a href="/who-we-are/mission-vision-culture" className={`block ${footerLinkClass}`}>
+              Mission &amp; Culture
+            </a>
+            <a href="/who-we-are/executive-leadership" className={`block ${footerLinkClass}`}>
+              Leadership
+            </a>
+            <a href="/who-we-are/locations" className={`block ${footerLinkClass}`}>
+              Global Locations
+            </a>
+            <a href="/careers" className={`block ${footerLinkClass}`}>
+              Careers
+            </a>
           </nav>
 
-          <section aria-label="Contact" className="space-y-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
-              Contact
-            </h3>
-            <div className="space-y-3 text-sm">
-              <div>
-                <a
-                  href="/contact-us"
-                  className="text-muted-foreground hover:text-red-600 transition-colors font-medium"
-                >
-                  Get in Touch
-                </a>
-              </div>
-              <div>
-                <p className="font-semibold text-foreground/90">Email</p>
-                <a
-                  href="/contact-us"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  info@jairosoft.com
-                </a>
-              </div>
-              <div>
-                <p className="font-semibold text-foreground/90">Phone</p>
-                <a
-                  href="tel:+18008818949"
-                  className="text-muted-foreground hover:text-red-600 transition-colors"
-                >
-                  +1 (800)-881-8949
-                </a>
-              </div>
-            </div>
+          <section aria-label="Contact">
+            <h3 className="mb-[18px] text-[14px] font-bold text-white">Contact</h3>
+            <a
+              href="/contact-us"
+              className="mb-[18px] inline-block rounded-[10px] bg-redesign-accent px-5 py-[11px] text-sm font-bold text-white transition-colors hover:bg-redesign-accent-hover"
+            >
+              Get in Touch
+            </a>
+            <div className="mb-[3px] text-[13px] text-[#6b7688]">Email</div>
+            <a
+              href="mailto:info@jairosoft.com"
+              className="mb-[14px] block text-[14.5px] text-[#cdd5e3] transition-colors hover:text-white"
+            >
+              info@jairosoft.com
+            </a>
+            <div className="mb-[3px] text-[13px] text-[#6b7688]">Phone</div>
+            <a
+              href="tel:+18008818949"
+              className="text-[14.5px] text-[#cdd5e3] transition-colors hover:text-white"
+            >
+              +1 (800)-881-8949
+            </a>
           </section>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/70">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <section aria-label="California Office" className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
-                🇺🇸 California
-              </h4>
-              <p className="text-xs text-muted-foreground">
-                12584 Luna Road
-                <br />
-                Victorville, CA 92392
-              </p>
-            </section>
-
-            <section aria-label="Hawaii Office" className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
-                🇺🇸 Hawaii
-              </h4>
-              <p className="text-xs text-muted-foreground">
-                1050 Queen St Suite 100
-                <br />
-                Honolulu, HI 96814
-              </p>
-            </section>
-
-            <section aria-label="Cebu Office" className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
-                🇵🇭 Cebu
-              </h4>
-              <p className="text-xs text-muted-foreground">
-                1049 M.J. Cuenco Avenue
-                <br />
-                Mabolo Cebu City, 6000
-              </p>
-            </section>
-
-            <section aria-label="Davao Office" className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
-                🇵🇭 Davao City
-              </h4>
-              <p className="text-xs text-muted-foreground">
-                Holy Trinity Avenue
-                <br />
-                Holy Trinity Village
-                <br />
-                Cabantian 8000 Davao City
-              </p>
-            </section>
-          </div>
+        <div className="mt-[54px] grid grid-cols-1 gap-[22px] border-t border-white/[0.08] pt-[38px] sm:grid-cols-2 lg:grid-cols-4">
+          {offices.map((office) => (
+            <div key={office.name}>
+              <div className="mb-2 text-[14px] font-bold text-white">
+                {office.flag} {office.name}
+              </div>
+              <div className="text-[13.5px] leading-[1.6] text-[#8b95a6]">
+                {office.address.map((line, i) => (
+                  <React.Fragment key={line}>
+                    {i > 0 && <br />}
+                    {line}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-12 border-t border-border/70 pt-6 text-xs text-muted-foreground flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <p>© {new Date().getFullYear()} Jairosoft. All rights reserved.</p>
-            <p className="text-xs">
-              Sitecore certified architects • Agile methodology • Enterprise
-              solutions
-            </p>
+        <div className="mt-10 flex flex-col items-start justify-between gap-[18px] border-t border-white/[0.08] pt-[26px] sm:flex-row sm:items-center">
+          <div>
+            <div className="text-[13.5px] text-[#8b95a6]">
+              © {new Date().getFullYear()} Jairosoft. All rights reserved.
+            </div>
+            <div className="mt-1 text-[12.5px] text-[#5f6a7b]">
+              Sitecore certified architects • Agile methodology • Enterprise solutions
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <a
-              href="/who-we-are/code-of-conduct"
-              className="hover:text-red-600 transition-colors"
-            >
+          <div className="flex gap-[22px]">
+            <a href="/who-we-are/code-of-conduct" className={footerLinkClass.replace("text-[14.5px]", "text-[13.5px]")}>
               Code of Conduct
             </a>
-            <a href="#" className="hover:text-red-600 transition-colors">
+            <a href="/privacy-policy" className={footerLinkClass.replace("text-[14.5px]", "text-[13.5px]")}>
               Privacy Policy
             </a>
-            <a href="/terms-and-conditions" className="hover:text-red-600 transition-colors">
+            <a href="/terms-and-conditions" className={footerLinkClass.replace("text-[14.5px]", "text-[13.5px]")}>
               Terms and Conditions
             </a>
           </div>

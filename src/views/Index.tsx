@@ -1,22 +1,29 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
-import Industries from "@/components/sections/Industries";
-import Timeline from "@/components/sections/Timeline";
-import Testimonials from "@/components/sections/Testimonials";
-import Logos from "@/components/sections/Logos";
-import QuizCTA from "@/components/sections/QuizCTA";
-import Insights from "@/components/sections/Insights";
-import Contact from "@/components/sections/Contact";
 import StickyHeader from "@/components/layout/StickyHeader";
-import Footer from "@/components/layout/Footer";
 
+// Below-fold sections: split out of the initial Home client chunk
+// (bundle-dynamic-imports). Hero + StickyHeader stay eager for LCP/nav.
+const Contact = dynamic(() => import("@/components/sections/Contact"));
+const Logos = dynamic(() => import("@/components/sections/Logos"));
+const Footer = dynamic(() => import("@/components/layout/Footer"));
+
+// Redesign (Claude Design mockup — Home.dc.html): Hero -> Services -> Connect
+// CTA -> PartnerLogos -> Footer. Per the approved plan this intentionally
+// drops Industries/Timeline/Testimonials/QuizCTA/Insights from Home (their
+// components remain in the repo, unused here, in case a later phase wants
+// them back on a dedicated page) — matches the mockup's leaner home page.
+// StickyHeader is now `alwaysVisible` here too: Hero used to carry its own
+// duplicate inline nav for pre-scroll display, which the mockup doesn't have
+// (a single persistent Nav instead), so that duplicate was removed.
 const Index: React.FC = () => {
   return (
     <>
-      <StickyHeader />
+      <StickyHeader alwaysVisible />
       <main>
         <Hero
           videoURL="https://youtu.be/rvVlTTg_7JQ"
@@ -25,13 +32,8 @@ const Index: React.FC = () => {
           cta="Talk to an Expert"
         />
         <Services />
-        {/* <Industries />
-        <Timeline />
-        <Testimonials />
-        <Logos /> */}
-        {/* <QuizCTA /> */}
-        {/* <Insights /> */}
         <Contact />
+        <Logos />
       </main>
       <Footer />
     </>

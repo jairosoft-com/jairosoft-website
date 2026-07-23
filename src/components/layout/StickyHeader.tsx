@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { startTransition } from "react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -16,6 +16,12 @@ import {
 interface StickyHeaderProps {
   alwaysVisible?: boolean;
 }
+
+// Redesign (Claude Design mockup — Nav.dc.html): dark glassy sticky bar,
+// Manrope font, blue accent. Scoped via the `redesign` Tailwind color group
+// and `font-manrope` so it doesn't touch the legacy tokens other pages rely on.
+const dropdownLinkClass =
+  "block text-sm font-medium text-[#cdd5e3] no-underline rounded-[9px] px-[13px] py-[11px] transition-colors hover:bg-[rgba(47,107,255,0.16)] hover:text-white focus:bg-[rgba(47,107,255,0.16)] focus:text-white focus:outline-none";
 
 const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) => {
   const [visible, setVisible] = React.useState(alwaysVisible);
@@ -46,8 +52,15 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) =>
       setVisible(true);
       return;
     }
-    
-    const onScroll = () => setVisible(window.scrollY > 100);
+
+    // Non-urgent visibility toggle — keep scroll handler cheap (rerender-transitions)
+    // and never block scrolling (client-passive-event-listeners).
+    const onScroll = () => {
+      const next = window.scrollY > 100;
+      startTransition(() => {
+        setVisible((prev) => (prev === next ? prev : next));
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -58,67 +71,69 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) =>
       role="banner"
       aria-hidden={!visible}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur transition-all duration-300 shadow-sm",
+        "font-manrope fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[rgba(9,13,22,0.82)] backdrop-blur-[14px] transition-all duration-300",
         visible
           ? "translate-y-0 opacity-100"
           : "-translate-y-full opacity-0 pointer-events-none"
       )}
     >
-      <nav className="container flex items-center justify-between py-3">
+      <nav className="container flex h-[74px] items-center justify-between">
         <a
           href="/"
           aria-label="Jairosoft home"
-          className="inline-flex items-center gap-2"
+          className="inline-flex flex-none items-center gap-[11px]"
         >
           <img
-            src="/lovable-uploads/logo-jairosoft.png"
+            src="/lovable-uploads/logo-jairosoft-dark.png"
             alt="Jairosoft"
-            className="h-7 w-auto"
-            loading="lazy"
+            className="h-[34px] w-auto"
+            loading="eager"
+            fetchPriority="high"
           />
-          <span className="font-brand font-extrabold tracking-wide text-foreground text-xl">
+          <span className="text-[15px] font-extrabold tracking-[0.16em] text-white">
             JAIROSOFT
           </span>
         </a>
-        <div className="hidden md:block">
-          <NavigationMenu>
-            <NavigationMenuList>
+
+        {/* Desktop Navigation */}
+        <div className="hidden min-[961px]:flex min-[961px]:items-center min-[961px]:gap-2">
+          <NavigationMenu viewportClassName="!bg-[#0f1626] !border-white/10 !rounded-[14px] !shadow-[0_24px_48px_rgba(0,0,0,0.5)]">
+            <NavigationMenuList className="gap-0.5">
               <NavigationMenuItem>
                 <a
                   href="/what-we-do"
                   className={cn(
-                    "text-sm px-4 py-2 inline-block transition-colors relative",
+                    "inline-block rounded-[9px] px-[14px] py-[9px] text-[14.5px] font-semibold transition-colors relative",
                     isActive("/what-we-do")
-                      ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
-                      : "text-foreground/80 hover:text-foreground"
+                      ? "text-white after:absolute after:bottom-0 after:left-[14px] after:right-[14px] after:h-0.5 after:bg-redesign-accent"
+                      : "text-[#cdd5e3] hover:bg-white/[0.07] hover:text-white"
                   )}
                 >
                   What We Do
                 </a>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger 
+                <NavigationMenuTrigger
                   className={cn(
-                    "text-sm transition-colors relative",
-                    isDropdownActive(["/who-we-serve"])
-                      ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
-                      : ""
+                    "!h-auto rounded-[9px] !bg-transparent px-[14px] py-[9px] text-[14.5px] font-semibold text-[#cdd5e3] transition-colors relative hover:!bg-white/[0.07] hover:!text-white focus:!bg-white/[0.07] data-[state=open]:!bg-white/[0.07] data-[state=open]:!text-white",
+                    isDropdownActive(["/who-we-serve"]) &&
+                      "text-white after:absolute after:bottom-0 after:left-[14px] after:right-[14px] after:h-0.5 after:bg-redesign-accent"
                   )}
                 >
                   Who We Serve
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[300px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
+                  <ul className="flex w-[250px] flex-col gap-0.5 p-2">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-serve/industries-testimonials">
-                          Industries & Testimonials
+                        <a className={dropdownLinkClass} href="/who-we-serve/industries-testimonials">
+                          Industries &amp; Testimonials
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-serve/naics">
+                        <a className={dropdownLinkClass} href="/who-we-serve/naics">
                           NAICS
                         </a>
                       </NavigationMenuLink>
@@ -127,63 +142,62 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) =>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger 
+                <NavigationMenuTrigger
                   className={cn(
-                    "text-sm transition-colors relative",
-                    isDropdownActive(["/who-we-are"])
-                      ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
-                      : ""
+                    "!h-auto rounded-[9px] !bg-transparent px-[14px] py-[9px] text-[14.5px] font-semibold text-[#cdd5e3] transition-colors relative hover:!bg-white/[0.07] hover:!text-white focus:!bg-white/[0.07] data-[state=open]:!bg-white/[0.07] data-[state=open]:!text-white",
+                    isDropdownActive(["/who-we-are"]) &&
+                      "text-white after:absolute after:bottom-0 after:left-[14px] after:right-[14px] after:h-0.5 after:bg-redesign-accent"
                   )}
                 >
                   Who We Are
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[320px] space-y-2 p-4 bg-popover text-popover-foreground rounded-none shadow-lg">
+                  <ul className="flex w-[290px] flex-col gap-0.5 p-2">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/our-history">
+                        <a className={dropdownLinkClass} href="/who-we-are/our-history">
                           Our History
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/mission-vision-culture">
-                          Mission, Vision & Culture
+                        <a className={dropdownLinkClass} href="/who-we-are/mission-vision-culture">
+                          Mission, Vision &amp; Culture
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/code-of-conduct">
+                        <a className={dropdownLinkClass} href="/who-we-are/code-of-conduct">
                           Code of Business Conduct
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/executive-leadership">
+                        <a className={dropdownLinkClass} href="/who-we-are/executive-leadership">
                           Executive Leadership
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/technical-leads">
-                          Technical Leads & Certified Experts
+                        <a className={dropdownLinkClass} href="/who-we-are/technical-leads">
+                          Technical Leads &amp; Certified Experts
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/partners">
+                        <a className={dropdownLinkClass} href="/who-we-are/partners">
                           Partners
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a className="block text-sm hover:underline focus:underline focus:outline-none" href="/who-we-are/locations">
+                        <a className={dropdownLinkClass} href="/who-we-are/locations">
                           Locations
                         </a>
                       </NavigationMenuLink>
@@ -195,10 +209,10 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) =>
                 <a
                   href="/careers"
                   className={cn(
-                    "text-sm px-4 py-2 inline-block transition-colors relative",
+                    "inline-block rounded-[9px] px-[14px] py-[9px] text-[14.5px] font-semibold transition-colors relative",
                     isActive("/careers")
-                      ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
-                      : "text-foreground/80 hover:text-foreground"
+                      ? "text-white after:absolute after:bottom-0 after:left-[14px] after:right-[14px] after:h-0.5 after:bg-redesign-accent"
+                      : "text-[#cdd5e3] hover:bg-white/[0.07] hover:text-white"
                   )}
                 >
                   Careers
@@ -208,10 +222,10 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) =>
                 <a
                   href="/contact-us"
                   className={cn(
-                    "text-sm px-4 py-2 inline-block transition-colors relative",
+                    "inline-block rounded-[9px] px-[14px] py-[9px] text-[14.5px] font-semibold transition-colors relative",
                     isActive("/contact-us")
-                      ? "text-red-600 font-medium after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-red-600"
-                      : "text-foreground/80 hover:text-foreground"
+                      ? "text-white after:absolute after:bottom-0 after:left-[14px] after:right-[14px] after:h-0.5 after:bg-redesign-accent"
+                      : "text-[#cdd5e3] hover:bg-white/[0.07] hover:text-white"
                   )}
                 >
                   Contact Us
@@ -219,231 +233,125 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ alwaysVisible = false }) =>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+          <a
+            href="/contact-us"
+            className="flex-none rounded-[10px] bg-redesign-accent px-[22px] py-[11px] text-sm font-bold text-white shadow-[0_8px_20px_rgba(47,107,255,0.35)] transition-colors hover:bg-redesign-accent-hover"
+          >
+            Let&apos;s talk
+          </a>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center gap-4">
+        {/* Mobile Navigation trigger */}
+        <div className="flex items-center gap-4 min-[961px]:hidden">
           <button
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMobileMenuOpen}
-            className="p-2 text-foreground hover:bg-foreground/10 rounded-md transition-colors"
+            className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-white/[0.12] bg-white/[0.08] text-white transition-colors"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-          <a
-            href="/contact-us"
-            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-          >
-            Let's talk
-          </a>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          "fixed inset-x-0 top-[var(--header-height,80px)] z-40 md:hidden bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300",
+          "fixed inset-x-0 top-[74px] z-40 max-h-[78vh] overflow-auto border-t border-white/[0.08] bg-[#0b1120] transition-all duration-300 min-[961px]:hidden",
           isMobileMenuOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-full pointer-events-none"
+            : "opacity-0 -translate-y-4 pointer-events-none"
         )}
-        style={{ top: visible ? 'var(--header-height, 80px)' : '0px' }}
       >
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-8">
-            <span className="font-brand font-extrabold text-xl text-foreground">Menu</span>
-            <button
-              onClick={closeMobileMenu}
-              aria-label="Close navigation menu"
-              className="p-2 text-foreground hover:bg-foreground/10 rounded-md transition-colors"
-            >
-              <X size={24} />
-            </button>
+        <nav className="flex flex-col gap-0.5 px-[22px] py-[14px] pb-[26px]">
+          <a
+            href="/what-we-do"
+            onClick={closeMobileMenu}
+            className={cn(
+              "py-[13px] text-[16px] font-semibold transition-colors",
+              isActive("/what-we-do") ? "text-redesign-accent" : "text-[#e6ebf4]"
+            )}
+          >
+            What We Do
+          </a>
+
+          <div className="pt-[14px] pb-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-[#6b7688]">
+            Who We Serve
           </div>
-          <nav>
-            <ul className="space-y-6">
-              <li>
-                <a
-                  href="/what-we-do"
-                  onClick={closeMobileMenu}
-                  className={cn(
-                    "block text-lg font-medium transition-colors",
-                    isActive("/what-we-do")
-                      ? "text-red-600"
-                      : "text-foreground hover:text-red-600"
-                  )}
-                >
-                  What We Do
-                </a>
-              </li>
-              <li>
-                <div className="space-y-3">
-                  <span className={cn(
-                    "block text-lg font-medium",
-                    isDropdownActive(["/who-we-serve"])
-                      ? "text-red-600"
-                      : "text-foreground"
-                  )}>
-                    Who We Serve
-                  </span>
-                  <div className="pl-4 space-y-2">
-                    <a
-                      href="/who-we-serve/industries-testimonials"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-serve/industries-testimonials")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Industries & Testimonials
-                    </a>
-                    <a
-                      href="/who-we-serve/naics"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-serve/naics")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      NAICS
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="space-y-3">
-                  <span className={cn(
-                    "block text-lg font-medium",
-                    isDropdownActive(["/who-we-are"])
-                      ? "text-red-600"
-                      : "text-foreground"
-                  )}>
-                    Who We Are
-                  </span>
-                  <div className="pl-4 space-y-2">
-                    <a
-                      href="/who-we-are/our-history"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-are/our-history")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Our History
-                    </a>
-                    <a
-                      href="/who-we-are/mission-vision-culture"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-are/mission-vision-culture")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Mission, Vision & Culture
-                    </a>
-                    <a
-                      href="/who-we-are/code-of-conduct"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-are/code-of-conduct")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Code of Business Conduct
-                    </a>
-                    <a
-                      href="/who-we-are/executive-leadership"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-are/executive-leadership")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Executive Leadership
-                    </a>
-                    <a
-                      href="/who-we-are/technical-leads"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-are/technical-leads")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Technical Leads & Certified Experts
-                    </a>
-                    <a
-                      href="/who-we-are/partners"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-are/partners")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Partners
-                    </a>
-                    <a
-                      href="/who-we-are/locations"
-                      onClick={closeMobileMenu}
-                      className={cn(
-                        "block text-base transition-colors",
-                        isActive("/who-we-are/locations")
-                          ? "text-red-600"
-                          : "text-foreground/70 hover:text-red-600"
-                      )}
-                    >
-                      Locations
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a
-                  href="/careers"
-                  onClick={closeMobileMenu}
-                  className={cn(
-                    "block text-lg font-medium transition-colors",
-                    isActive("/careers")
-                      ? "text-red-600"
-                      : "text-foreground hover:text-red-600"
-                  )}
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact-us"
-                  onClick={closeMobileMenu}
-                  className={cn(
-                    "block text-lg font-medium transition-colors",
-                    isActive("/contact-us")
-                      ? "text-red-600"
-                      : "text-foreground hover:text-red-600"
-                  )}
-                >
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+          <a
+            href="/who-we-serve/industries-testimonials"
+            onClick={closeMobileMenu}
+            className={cn(
+              "px-4 py-[9px] text-[15px] transition-colors",
+              isActive("/who-we-serve/industries-testimonials") ? "text-redesign-accent" : "text-[#cdd5e3]"
+            )}
+          >
+            Industries &amp; Testimonials
+          </a>
+          <a
+            href="/who-we-serve/naics"
+            onClick={closeMobileMenu}
+            className={cn(
+              "px-4 py-[9px] text-[15px] transition-colors",
+              isActive("/who-we-serve/naics") ? "text-redesign-accent" : "text-[#cdd5e3]"
+            )}
+          >
+            NAICS
+          </a>
+
+          <div className="pt-[14px] pb-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-[#6b7688]">
+            Who We Are
+          </div>
+          {[
+            { href: "/who-we-are/our-history", label: "Our History" },
+            { href: "/who-we-are/mission-vision-culture", label: "Mission, Vision & Culture" },
+            { href: "/who-we-are/code-of-conduct", label: "Code of Business Conduct" },
+            { href: "/who-we-are/executive-leadership", label: "Executive Leadership" },
+            { href: "/who-we-are/technical-leads", label: "Technical Leads & Certified Experts" },
+            { href: "/who-we-are/partners", label: "Partners" },
+            { href: "/who-we-are/locations", label: "Locations" },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={closeMobileMenu}
+              className={cn(
+                "px-4 py-[9px] text-[15px] transition-colors",
+                isActive(item.href) ? "text-redesign-accent" : "text-[#cdd5e3]"
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
+
+          <a
+            href="/careers"
+            onClick={closeMobileMenu}
+            className={cn(
+              "pt-[13px] pb-1 text-[16px] font-semibold transition-colors",
+              isActive("/careers") ? "text-redesign-accent" : "text-[#e6ebf4]"
+            )}
+          >
+            Careers
+          </a>
+          <a
+            href="/contact-us"
+            onClick={closeMobileMenu}
+            className={cn(
+              "py-[13px] text-[16px] font-semibold transition-colors",
+              isActive("/contact-us") ? "text-redesign-accent" : "text-[#e6ebf4]"
+            )}
+          >
+            Contact Us
+          </a>
+          <a
+            href="/contact-us"
+            onClick={closeMobileMenu}
+            className="mt-3 rounded-[11px] bg-redesign-accent py-[14px] text-center text-[15px] font-bold text-white transition-colors hover:bg-redesign-accent-hover"
+          >
+            Let&apos;s talk
+          </a>
+        </nav>
       </div>
     </div>
   );
